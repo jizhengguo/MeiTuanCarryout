@@ -52,6 +52,8 @@
 		4304ED711F2E02F100F009EB /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED481F2E02F100F009EB /* UIImageView+WebCache.m */; };
 		4304ED721F2E02F100F009EB /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED4A1F2E02F100F009EB /* UIView+WebCache.m */; };
 		4304ED731F2E02F100F009EB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED4C1F2E02F100F009EB /* UIView+WebCacheOperation.m */; };
+		4304ED761F2E0D5F00F009EB /* NSObject+LineFormula.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */; };
+		4304ED791F2E15AB00F009EB /* JZGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +172,10 @@
 		4304ED4A1F2E02F100F009EB /* UIView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCache.m"; sourceTree = "<group>"; };
 		4304ED4B1F2E02F100F009EB /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		4304ED4C1F2E02F100F009EB /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		4304ED741F2E0D5F00F009EB /* NSObject+LineFormula.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LineFormula.h"; sourceTree = "<group>"; };
+		4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LineFormula.m"; sourceTree = "<group>"; };
+		4304ED771F2E15AB00F009EB /* JZGNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZGNavigationBar.h; sourceTree = "<group>"; };
+		4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZGNavigationBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +291,8 @@
 				4304ECF71F2E02F100F009EB /* JZGNavigationController.m */,
 				4304ECF41F2E02F100F009EB /* JZGBasicController.h */,
 				4304ECF51F2E02F100F009EB /* JZGBasicController.m */,
+				4304ED771F2E15AB00F009EB /* JZGNavigationBar.h */,
+				4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -301,6 +309,8 @@
 		4304ECFB1F2E02F100F009EB /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				4304ED741F2E0D5F00F009EB /* NSObject+LineFormula.h */,
+				4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -545,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4304ED791F2E15AB00F009EB /* JZGNavigationBar.m in Sources */,
 				4304ED501F2E02F100F009EB /* ShopController.m in Sources */,
 				4304ED521F2E02F100F009EB /* AFNetworkReachabilityManager.m in Sources */,
 				4304ED711F2E02F100F009EB /* UIImageView+WebCache.m in Sources */,
@@ -573,6 +584,7 @@
 				4304ED691F2E02F100F009EB /* SDWebImageDownloaderOperation.m in Sources */,
 				4304ECBE1F2E026600F009EB /* main.m in Sources */,
 				4304ED721F2E02F100F009EB /* UIView+WebCache.m in Sources */,
+				4304ED761F2E0D5F00F009EB /* NSObject+LineFormula.m in Sources */,
 				4304ED611F2E02F100F009EB /* MKAnnotationView+WebCache.m in Sources */,
 				4304ED631F2E02F100F009EB /* NSImage+WebCache.m in Sources */,
 				4304ED5A1F2E02F100F009EB /* MASLayoutConstraint.m in Sources */,

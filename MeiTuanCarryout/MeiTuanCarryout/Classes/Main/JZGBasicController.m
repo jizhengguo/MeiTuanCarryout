@@ -8,6 +8,7 @@
 
 #import "JZGBasicController.h"
 #import "Masonry.h"
+#import "JZGNavigationBar.h"
 
 
 @interface JZGBasicController ()
@@ -16,32 +17,44 @@
 
 @implementation JZGBasicController
 
+-(void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle{
+    _statusBarStyle = statusBarStyle;
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        //创建navbar
+         JZGNavigationBar *navBar = [[JZGNavigationBar alloc]init];
+        //创建一个navItem
+        UINavigationItem *navItem = [[UINavigationItem alloc]init];
+        //使其与导航条建立联系
+        [navBar setItems:@[navItem]];
+        
+        //赋值
+        _navItem = navItem;
+        _navBar = navBar;
+        
+        
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //创建navbar
-    UINavigationBar *navBar = [[UINavigationBar alloc]init];
-    
-
-    //将导航栏变成透明
-    navBar.shadowImage = [UIImage new];
-    [navBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    //创建一个navItem
-    UINavigationItem *navItem = [[UINavigationItem alloc]init];
-    //使其与导航条建立联系
-    [navBar setItems:@[navItem]];
-    
     //添加到父控件上
-    [self.view addSubview:navBar];
+    [self.view addSubview:self.navBar];
     
     //设置导航条约束
-    [navBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.offset(0);
         make.height.offset(64);
     }];
-    
-    //赋值
-    _navItem = navItem;
-    _navBar = navBar;
+
     
 }
 
@@ -50,6 +63,10 @@
     if (self.isViewLoaded &&self.view.window == nil) {
         self.view = nil;
     }
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return self.statusBarStyle;
 }
 
 /*
