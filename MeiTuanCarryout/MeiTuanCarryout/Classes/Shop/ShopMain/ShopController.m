@@ -11,13 +11,18 @@
 #import "Masonry.h"
 #import "NSObject+LineFormula.h"
 #import "JZGNavigationBar.h"
+#import "ShopOrderController.h"
+#import "ShopCommentController.h"
+#import "ShopInfoController.h"
 
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
 
 @interface ShopController ()
-
+//创建头部视图
 @property (nonatomic, weak) UIView *headerView;
+//创建标签视图
+@property (nonatomic, weak) UIView *shopTagView;
 
 
 @end
@@ -26,8 +31,19 @@
 
 - (void)viewDidLoad {
     
-
+    [self setupUI];
     
+    [super viewDidLoad];
+    
+    //创建手势
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesture:)];
+    //添加手势
+    [self.view addGestureRecognizer:pan];
+   
+
+}
+
+-(void)setupUI{
     self.view.backgroundColor = [UIColor whiteColor];
     //修改标题
     self.navItem.title = @"沙县小吃";
@@ -39,6 +55,14 @@
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_share"] style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navBar.tintColor = [UIColor colorWithWhite:0.4 alpha:1];
     //创建头部视图
+    [self settingHeaderView];
+    //创建标签视图
+    [self settingShopTagView];
+
+}
+
+-(void)settingHeaderView{
+    //创建头部视图
     UIView *hesderView = [[UIView alloc] init];
     //添加背景颜色
     hesderView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -49,18 +73,41 @@
         make.top.left.right.offset(0);
         make.height.offset(180);
     }];
-    
-    [super viewDidLoad];
     _headerView = hesderView;
-    
-    
-    
-    //创建手势
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesture:)];
-    //添加手势
-    [self.view addGestureRecognizer:pan];
-   
 
+}
+
+-(void)settingShopTagView{
+    //创建标签视图
+    UIView *shopTagView = [[UIView alloc]init];
+    //添加背景颜色
+    shopTagView.backgroundColor = [UIColor yellowColor];
+    //添加到父控件
+    [self.view addSubview:shopTagView];
+    //设置约束
+    [shopTagView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_headerView.mas_bottom).offset(0);
+        make.left.right.offset(0);
+        make.left.height.offset(44);
+    }];
+    //赋值
+    _shopTagView = shopTagView;
+    
+}
+
+-(void)settingShopScrollView{
+    //创建滚动视图
+    UIScrollView *shopScrollView = [[UIScrollView alloc]init];
+    //添加到父控件
+    [self.view addSubview:shopScrollView];
+    //设置约束
+    [shopScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_shopTagView.mas_bottom);
+        make.left.right.bottom.offset(0);
+        
+    }];
+    
+    
 }
 
 -(void)panGesture:(UIPanGestureRecognizer *)pan{
@@ -98,11 +145,11 @@
     self.navBar.tintColor = [UIColor colorWithWhite:white alpha:1];
     
     //设置状态栏
-    if(p.y +height <= KHeaderViewHeightMax && self.statusBarStyle != UIStatusBarStyleLightContent){
+    if(p.y +height >= KHeaderViewHeightMax && self.statusBarStyle != UIStatusBarStyleLightContent){
         
         self.statusBarStyle = UIStatusBarStyleLightContent;
         
-    }else if (p.y +height >= KHeaderViewHeightMin && self.statusBarStyle != UIStatusBarStyleDefault){
+    }else if (p.y +height <= KHeaderViewHeightMin && self.statusBarStyle != UIStatusBarStyleDefault){
         
         self.statusBarStyle = UIStatusBarStyleDefault;
         

@@ -16,7 +16,6 @@
 		4304ED4D1F2E02F100F009EB /* FoodDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ECF21F2E02F100F009EB /* FoodDetailController.m */; };
 		4304ED4E1F2E02F100F009EB /* JZGBasicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ECF51F2E02F100F009EB /* JZGBasicController.m */; };
 		4304ED4F1F2E02F100F009EB /* JZGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ECF71F2E02F100F009EB /* JZGNavigationController.m */; };
-		4304ED501F2E02F100F009EB /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ECFA1F2E02F100F009EB /* ShopController.m */; };
 		4304ED511F2E02F100F009EB /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ECFF1F2E02F100F009EB /* AFHTTPSessionManager.m */; };
 		4304ED521F2E02F100F009EB /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED021F2E02F100F009EB /* AFNetworkReachabilityManager.m */; };
 		4304ED531F2E02F100F009EB /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED041F2E02F100F009EB /* AFSecurityPolicy.m */; };
@@ -54,6 +53,10 @@
 		4304ED731F2E02F100F009EB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED4C1F2E02F100F009EB /* UIView+WebCacheOperation.m */; };
 		4304ED761F2E0D5F00F009EB /* NSObject+LineFormula.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */; };
 		4304ED791F2E15AB00F009EB /* JZGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */; };
+		43BC26F81F2F502D000C3ECD /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC26F61F2F502D000C3ECD /* ShopController.m */; };
+		43BC26FB1F2F506D000C3ECD /* ShopCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC26FA1F2F506D000C3ECD /* ShopCommentController.m */; };
+		43BC26FE1F2F508A000C3ECD /* ShopInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC26FD1F2F508A000C3ECD /* ShopInfoController.m */; };
+		43BC27011F2F509B000C3ECD /* ShopOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27001F2F509B000C3ECD /* ShopOrderController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +96,6 @@
 		4304ECF51F2E02F100F009EB /* JZGBasicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZGBasicController.m; sourceTree = "<group>"; };
 		4304ECF61F2E02F100F009EB /* JZGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZGNavigationController.h; sourceTree = "<group>"; };
 		4304ECF71F2E02F100F009EB /* JZGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZGNavigationController.m; sourceTree = "<group>"; };
-		4304ECF91F2E02F100F009EB /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
-		4304ECFA1F2E02F100F009EB /* ShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopController.m; sourceTree = "<group>"; };
 		4304ECFE1F2E02F100F009EB /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		4304ECFF1F2E02F100F009EB /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		4304ED001F2E02F100F009EB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -176,6 +177,14 @@
 		4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LineFormula.m"; sourceTree = "<group>"; };
 		4304ED771F2E15AB00F009EB /* JZGNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZGNavigationBar.h; sourceTree = "<group>"; };
 		4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZGNavigationBar.m; sourceTree = "<group>"; };
+		43BC26F51F2F502D000C3ECD /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
+		43BC26F61F2F502D000C3ECD /* ShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopController.m; sourceTree = "<group>"; };
+		43BC26F91F2F506D000C3ECD /* ShopCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCommentController.h; sourceTree = "<group>"; };
+		43BC26FA1F2F506D000C3ECD /* ShopCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCommentController.m; sourceTree = "<group>"; };
+		43BC26FC1F2F508A000C3ECD /* ShopInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoController.h; sourceTree = "<group>"; };
+		43BC26FD1F2F508A000C3ECD /* ShopInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoController.m; sourceTree = "<group>"; };
+		43BC26FF1F2F509B000C3ECD /* ShopOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderController.h; sourceTree = "<group>"; };
+		43BC27001F2F509B000C3ECD /* ShopOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				4304ECF31F2E02F100F009EB /* Main */,
-				4304ECF81F2E02F100F009EB /* Shop */,
+				43BC26F11F2F502D000C3ECD /* Shop */,
 				4304ECF01F2E02F100F009EB /* FoodDetail */,
 			);
 			path = Classes;
@@ -295,15 +304,6 @@
 				4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		4304ECF81F2E02F100F009EB /* Shop */ = {
-			isa = PBXGroup;
-			children = (
-				4304ECF91F2E02F100F009EB /* ShopController.h */,
-				4304ECFA1F2E02F100F009EB /* ShopController.m */,
-			);
-			path = Shop;
 			sourceTree = "<group>";
 		};
 		4304ECFB1F2E02F100F009EB /* Commons */ = {
@@ -421,6 +421,53 @@
 				4304ED4C1F2E02F100F009EB /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		43BC26F11F2F502D000C3ECD /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				43BC26F41F2F502D000C3ECD /* ShopMain */,
+				43BC26F71F2F502D000C3ECD /* ShopOredr */,
+				43BC26F21F2F502D000C3ECD /* ShopComment */,
+				43BC26F31F2F502D000C3ECD /* ShopInfo */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		43BC26F21F2F502D000C3ECD /* ShopComment */ = {
+			isa = PBXGroup;
+			children = (
+				43BC26F91F2F506D000C3ECD /* ShopCommentController.h */,
+				43BC26FA1F2F506D000C3ECD /* ShopCommentController.m */,
+			);
+			path = ShopComment;
+			sourceTree = "<group>";
+		};
+		43BC26F31F2F502D000C3ECD /* ShopInfo */ = {
+			isa = PBXGroup;
+			children = (
+				43BC26FC1F2F508A000C3ECD /* ShopInfoController.h */,
+				43BC26FD1F2F508A000C3ECD /* ShopInfoController.m */,
+			);
+			path = ShopInfo;
+			sourceTree = "<group>";
+		};
+		43BC26F41F2F502D000C3ECD /* ShopMain */ = {
+			isa = PBXGroup;
+			children = (
+				43BC26F51F2F502D000C3ECD /* ShopController.h */,
+				43BC26F61F2F502D000C3ECD /* ShopController.m */,
+			);
+			path = ShopMain;
+			sourceTree = "<group>";
+		};
+		43BC26F71F2F502D000C3ECD /* ShopOredr */ = {
+			isa = PBXGroup;
+			children = (
+				43BC26FF1F2F509B000C3ECD /* ShopOrderController.h */,
+				43BC27001F2F509B000C3ECD /* ShopOrderController.m */,
+			);
+			path = ShopOredr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -555,8 +602,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43BC26F81F2F502D000C3ECD /* ShopController.m in Sources */,
 				4304ED791F2E15AB00F009EB /* JZGNavigationBar.m in Sources */,
-				4304ED501F2E02F100F009EB /* ShopController.m in Sources */,
 				4304ED521F2E02F100F009EB /* AFNetworkReachabilityManager.m in Sources */,
 				4304ED711F2E02F100F009EB /* UIImageView+WebCache.m in Sources */,
 				4304ED5E1F2E02F100F009EB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -567,6 +614,7 @@
 				4304ED6B1F2E02F100F009EB /* SDWebImagePrefetcher.m in Sources */,
 				4304ED731F2E02F100F009EB /* UIView+WebCacheOperation.m in Sources */,
 				4304ED5F1F2E02F100F009EB /* View+MASAdditions.m in Sources */,
+				43BC27011F2F509B000C3ECD /* ShopOrderController.m in Sources */,
 				4304ED4E1F2E02F100F009EB /* JZGBasicController.m in Sources */,
 				4304ED5B1F2E02F100F009EB /* MASViewAttribute.m in Sources */,
 				4304ED701F2E02F100F009EB /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -574,6 +622,7 @@
 				4304ED641F2E02F100F009EB /* SDImageCache.m in Sources */,
 				4304ED6A1F2E02F100F009EB /* SDWebImageManager.m in Sources */,
 				4304ED4F1F2E02F100F009EB /* JZGNavigationController.m in Sources */,
+				43BC26FE1F2F508A000C3ECD /* ShopInfoController.m in Sources */,
 				4304ED531F2E02F100F009EB /* AFSecurityPolicy.m in Sources */,
 				4304ED541F2E02F100F009EB /* AFURLRequestSerialization.m in Sources */,
 				4304ED6D1F2E02F100F009EB /* UIImage+GIF.m in Sources */,
@@ -582,6 +631,7 @@
 				4304ED5D1F2E02F100F009EB /* NSArray+MASAdditions.m in Sources */,
 				4304ED6E1F2E02F100F009EB /* UIImage+MultiFormat.m in Sources */,
 				4304ED691F2E02F100F009EB /* SDWebImageDownloaderOperation.m in Sources */,
+				43BC26FB1F2F506D000C3ECD /* ShopCommentController.m in Sources */,
 				4304ECBE1F2E026600F009EB /* main.m in Sources */,
 				4304ED721F2E02F100F009EB /* UIView+WebCache.m in Sources */,
 				4304ED761F2E0D5F00F009EB /* NSObject+LineFormula.m in Sources */,
@@ -823,6 +873,7 @@
 				4304ECE81F2E026600F009EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4304ECE91F2E026600F009EB /* Build configuration list for PBXNativeTarget "MeiTuanCarryoutTests" */ = {
 			isa = XCConfigurationList;
@@ -831,6 +882,7 @@
 				4304ECEB1F2E026600F009EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4304ECEC1F2E026600F009EB /* Build configuration list for PBXNativeTarget "MeiTuanCarryoutUITests" */ = {
 			isa = XCConfigurationList;
@@ -839,6 +891,7 @@
 				4304ECEE1F2E026600F009EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
