@@ -134,7 +134,7 @@
     
     
 }
-
+#pragma mark - 创建按钮
 -(UIButton *)makeButtonWithTitle:(NSString *)title{
     //创建按钮
     UIButton *btn = [[UIButton alloc]init];
@@ -144,11 +144,31 @@
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     //设置文字颜色
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //设置tag
+    btn.tag = _shopTagView.subviews.count;
     //添加到父控件
     [_shopTagView addSubview:btn];
+    //设置监听方法
+    [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     return btn;
 }
-
+#pragma mark - 设置监听方法
+-(void)buttonClick:(UIButton *)button{
+    //设置黄条位置
+    _yellowView.transform = CGAffineTransformMakeTranslation(button.tag * button.bounds.size.width, 0);
+    //判断联动
+    for (NSInteger i = 0; i < _shopTagView.subviews.count-1; i++) {
+        if (_shopTagView.subviews[i].tag == button.tag) {
+            ((UIButton *)_shopTagView.subviews[i]).titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        }else{
+            ((UIButton *)_shopTagView.subviews[i]).titleLabel.font = [UIFont systemFontOfSize:14];
+        }
+    }
+    [UIView animateWithDuration:0.5 animations:^{
+        _shopScrollView.contentOffset = CGPointMake(button.tag * _shopScrollView.bounds.size.width, 0);
+    }];
+}
 #pragma mark - 设置滚动视图
 -(void)settingShopScrollView{
     //创建滚动视图
@@ -198,8 +218,6 @@
     _shopScrollView = shopScrollView;
     
 }
-
-
 #pragma mark - 设置手势
 -(void)panGesture:(UIPanGestureRecognizer *)pan{
     //先拿到相对位置
@@ -249,8 +267,20 @@
     // 恢复到初始值
     [pan setTranslation:CGPointZero inView:pan.view];
 }
-
-#
+#pragma mark - 设置滚动视图的联动(ScrollView代理)
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat transfromX = scrollView.contentOffset.x / scrollView.contentSize.width * _shopTagView.bounds.size.width;
+    
+    _yellowView.transform = CGAffineTransformMakeTranslation(transfromX, 0);
+    
+    for (NSInteger i = 0; i < _shopTagView.subviews.count-1; i++) {
+        if (_shopTagView.subviews[i].tag == scrollView.contentOffset.x/scrollView.bounds.size.width) {
+            ((UIButton *)_shopTagView.subviews[i]).titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        }else{
+            ((UIButton *)_shopTagView.subviews[i]).titleLabel.font = [UIFont systemFontOfSize:14];
+        }
+    }
+}
 
 
 
