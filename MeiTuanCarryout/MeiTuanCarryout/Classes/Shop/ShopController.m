@@ -98,11 +98,11 @@
     self.navBar.tintColor = [UIColor colorWithWhite:white alpha:1];
     
     //设置状态栏
-    if(p.y +height == KHeaderViewHeightMax && self.statusBarStyle != UIStatusBarStyleLightContent){
+    if(p.y +height <= KHeaderViewHeightMax && self.statusBarStyle != UIStatusBarStyleLightContent){
         
         self.statusBarStyle = UIStatusBarStyleLightContent;
         
-    }else if (p.y +height == KHeaderViewHeightMin && self.statusBarStyle != UIStatusBarStyleDefault){
+    }else if (p.y +height >= KHeaderViewHeightMin && self.statusBarStyle != UIStatusBarStyleDefault){
         
         self.statusBarStyle = UIStatusBarStyleDefault;
         
