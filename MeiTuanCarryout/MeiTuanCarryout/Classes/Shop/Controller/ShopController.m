@@ -25,6 +25,9 @@
 @property (nonatomic, weak) UIView *shopTagView;
 //创建滚动视图
 @property (nonatomic, weak) UIScrollView *shopScrollView;
+//创建黄色指示View
+@property (nonatomic, weak) UIView *yellowView;
+
 
 
 
@@ -65,7 +68,7 @@
     [self settingShopScrollView];
 
 }
-
+#pragma mark - 设置头部视图
 -(void)settingHeaderView{
     //创建头部视图
     UIView *hesderView = [[UIView alloc] init];
@@ -81,7 +84,7 @@
     _headerView = hesderView;
 
 }
-
+#pragma mark - 设置标签视图
 -(void)settingShopTagView{
     //创建标签视图
     UIView *shopTagView = [[UIView alloc]init];
@@ -97,9 +100,56 @@
     }];
     //赋值
     _shopTagView = shopTagView;
+    //添加按钮
+    UIButton *button = [self makeButtonWithTitle:@"点餐"];
+    [self makeButtonWithTitle:@"评论"];
+    [self makeButtonWithTitle:@"详情"];
+    //设置初始加粗
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    
+    //设置约束
+    [shopTagView.subviews mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.offset(0);
+    }];
+    
+    [shopTagView.subviews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];
+    //创建黄色小条
+    UIView *yellowView = [[UIView alloc]init];
+    //设置颜色
+    yellowView.backgroundColor = [UIColor orangeColor];
+    //加入父控件
+    [shopTagView addSubview:yellowView];
+    //设置约束
+    [yellowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.offset(0);
+        make.height.offset(4);
+        make.width.offset(40);
+        make.centerX.equalTo(button);
+        
+    }];
+    
+    _yellowView = yellowView;
+    
+    
+    
     
 }
 
+-(UIButton *)makeButtonWithTitle:(NSString *)title{
+    //创建按钮
+    UIButton *btn = [[UIButton alloc]init];
+    //设置文字
+    [btn setTitle:title forState:UIControlStateNormal];
+    //设置字体
+    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    //设置文字颜色
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //添加到父控件
+    [_shopTagView addSubview:btn];
+    return btn;
+}
+
+#pragma mark - 设置滚动视图
 -(void)settingShopScrollView{
     //创建滚动视图
     UIScrollView *shopScrollView = [[UIScrollView alloc]init];
@@ -111,7 +161,7 @@
         make.left.right.bottom.offset(0);
         
     }];
-    //创建控制器并添加
+    
     ShopOrderController *vc1 = [[ShopOrderController alloc]init];
     ShopCommentController *vc2 = [[ShopCommentController alloc]init];
     ShopInfoController *vc3 = [[ShopInfoController alloc]init];
@@ -150,7 +200,7 @@
 }
 
 
-
+#pragma mark - 设置手势
 -(void)panGesture:(UIPanGestureRecognizer *)pan{
     //先拿到相对位置
     CGPoint p = [pan translationInView:pan.view];
@@ -199,6 +249,8 @@
     // 恢复到初始值
     [pan setTranslation:CGPointZero inView:pan.view];
 }
+
+#
 
 
 
