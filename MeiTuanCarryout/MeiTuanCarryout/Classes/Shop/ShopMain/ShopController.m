@@ -18,11 +18,14 @@
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
 
-@interface ShopController ()
+@interface ShopController ()<UIScrollViewDelegate>
 //创建头部视图
 @property (nonatomic, weak) UIView *headerView;
 //创建标签视图
 @property (nonatomic, weak) UIView *shopTagView;
+//创建滚动视图
+@property (nonatomic, weak) UIScrollView *shopScrollView;
+
 
 
 @end
@@ -58,6 +61,8 @@
     [self settingHeaderView];
     //创建标签视图
     [self settingShopTagView];
+    //创建滚动视图
+    [self settingShopScrollView];
 
 }
 
@@ -81,7 +86,7 @@
     //创建标签视图
     UIView *shopTagView = [[UIView alloc]init];
     //添加背景颜色
-    shopTagView.backgroundColor = [UIColor yellowColor];
+    shopTagView.backgroundColor = [UIColor whiteColor];
     //添加到父控件
     [self.view addSubview:shopTagView];
     //设置约束
@@ -106,9 +111,45 @@
         make.left.right.bottom.offset(0);
         
     }];
+    //创建控制器并添加
+    ShopOrderController *vc1 = [[ShopOrderController alloc]init];
+    ShopCommentController *vc2 = [[ShopCommentController alloc]init];
+    ShopInfoController *vc3 = [[ShopInfoController alloc]init];
     
+    NSArray <UIViewController *>*arr = @[vc1, vc2, vc3];
+    
+    for (NSInteger i = 0; i < arr.count; i++) {
+        //将其添加到父控件中
+        [shopScrollView addSubview:arr[i].view];
+        //将其控制器添加到父控制器
+        [self addChildViewController:arr[i]];
+        //确定添加
+        [arr[i] didMoveToParentViewController:self];
+    }
+    //设置约束
+    [shopScrollView.subviews mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.offset(0);
+        make.height.width.equalTo(shopScrollView);
+        
+    }];
+    
+    [shopScrollView.subviews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];
+    //设置代理
+    shopScrollView.delegate = self;
+    //关闭弹簧效果
+    shopScrollView.bounces = NO;
+    //设置分页效果
+    shopScrollView.pagingEnabled = YES;
+    //关闭滚动条
+    shopScrollView.showsVerticalScrollIndicator = NO;
+    shopScrollView.showsHorizontalScrollIndicator = NO;
+    
+    //赋值
+    _shopScrollView = shopScrollView;
     
 }
+
+
 
 -(void)panGesture:(UIPanGestureRecognizer *)pan{
     //先拿到相对位置
