@@ -59,6 +59,11 @@
 		43BC27141F2F582A000C3ECD /* ShopOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC270E1F2F582A000C3ECD /* ShopOrderController.m */; };
 		43BC27171F2F58C7000C3ECD /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27161F2F58C7000C3ECD /* UILabel+Addition.m */; };
 		43BC271A1F2F58D7000C3ECD /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27191F2F58D7000C3ECD /* UIColor+Addition.m */; };
+		43F8325A1F301241000E5A18 /* ShopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832591F301241000E5A18 /* ShopHeaderView.m */; };
+		43F8325D1F303D64000E5A18 /* loopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8325C1F303D64000E5A18 /* loopView.m */; };
+		43F832601F3089E3000E5A18 /* shopHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8325F1F3089E3000E5A18 /* shopHeaderViewModel.m */; };
+		43F832631F3089FC000E5A18 /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832621F3089FC000E5A18 /* LoopViewModel.m */; };
+		43F832651F308AD7000E5A18 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 43F832641F308AD7000E5A18 /* food.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +196,15 @@
 		43BC27161F2F58C7000C3ECD /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addition.m"; sourceTree = "<group>"; };
 		43BC27181F2F58D7000C3ECD /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		43BC27191F2F58D7000C3ECD /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
+		43F832581F301241000E5A18 /* ShopHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopHeaderView.h; sourceTree = "<group>"; };
+		43F832591F301241000E5A18 /* ShopHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopHeaderView.m; sourceTree = "<group>"; };
+		43F8325B1F303D64000E5A18 /* loopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loopView.h; sourceTree = "<group>"; };
+		43F8325C1F303D64000E5A18 /* loopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loopView.m; sourceTree = "<group>"; };
+		43F8325E1F3089E3000E5A18 /* shopHeaderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopHeaderViewModel.h; sourceTree = "<group>"; };
+		43F8325F1F3089E3000E5A18 /* shopHeaderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shopHeaderViewModel.m; sourceTree = "<group>"; };
+		43F832611F3089FB000E5A18 /* LoopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopViewModel.h; sourceTree = "<group>"; };
+		43F832621F3089FC000E5A18 /* LoopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopViewModel.m; sourceTree = "<group>"; };
+		43F832641F308AD7000E5A18 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +270,7 @@
 				4304ECC01F2E026600F009EB /* AppDelegate.m */,
 				4304ECC81F2E026600F009EB /* Assets.xcassets */,
 				4304ECCA1F2E026600F009EB /* LaunchScreen.storyboard */,
+				43F832641F308AD7000E5A18 /* food.json */,
 				4304ECCD1F2E026600F009EB /* Info.plist */,
 				4304ECBD1F2E026600F009EB /* main.m */,
 			);
@@ -485,6 +500,10 @@
 		43BC270F1F2F582A000C3ECD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				43F8325E1F3089E3000E5A18 /* shopHeaderViewModel.h */,
+				43F8325F1F3089E3000E5A18 /* shopHeaderViewModel.m */,
+				43F832611F3089FB000E5A18 /* LoopViewModel.h */,
+				43F832621F3089FC000E5A18 /* LoopViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -492,6 +511,10 @@
 		43BC27101F2F582A000C3ECD /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				43F832581F301241000E5A18 /* ShopHeaderView.h */,
+				43F832591F301241000E5A18 /* ShopHeaderView.m */,
+				43F8325B1F303D64000E5A18 /* loopView.h */,
+				43F8325C1F303D64000E5A18 /* loopView.m */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -602,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F832651F308AD7000E5A18 /* food.json in Resources */,
 				4304ECCC1F2E026600F009EB /* LaunchScreen.storyboard in Resources */,
 				4304ECC91F2E026600F009EB /* Assets.xcassets in Resources */,
 			);
@@ -636,12 +660,14 @@
 				4304ED4D1F2E02F100F009EB /* FoodDetailController.m in Sources */,
 				4304ED5C1F2E02F100F009EB /* MASViewConstraint.m in Sources */,
 				4304ED6C1F2E02F100F009EB /* UIButton+WebCache.m in Sources */,
+				43F832631F3089FC000E5A18 /* LoopViewModel.m in Sources */,
 				4304ED6B1F2E02F100F009EB /* SDWebImagePrefetcher.m in Sources */,
 				4304ED731F2E02F100F009EB /* UIView+WebCacheOperation.m in Sources */,
 				4304ED5F1F2E02F100F009EB /* View+MASAdditions.m in Sources */,
 				4304ED4E1F2E02F100F009EB /* JZGBasicController.m in Sources */,
 				43BC27141F2F582A000C3ECD /* ShopOrderController.m in Sources */,
 				4304ED5B1F2E02F100F009EB /* MASViewAttribute.m in Sources */,
+				43F832601F3089E3000E5A18 /* shopHeaderViewModel.m in Sources */,
 				4304ED701F2E02F100F009EB /* UIImageView+HighlightedWebCache.m in Sources */,
 				4304ED591F2E02F100F009EB /* MASConstraintMaker.m in Sources */,
 				4304ED641F2E02F100F009EB /* SDImageCache.m in Sources */,
@@ -660,11 +686,13 @@
 				4304ECBE1F2E026600F009EB /* main.m in Sources */,
 				4304ED721F2E02F100F009EB /* UIView+WebCache.m in Sources */,
 				4304ED761F2E0D5F00F009EB /* NSObject+LineFormula.m in Sources */,
+				43F8325D1F303D64000E5A18 /* loopView.m in Sources */,
 				4304ED611F2E02F100F009EB /* MKAnnotationView+WebCache.m in Sources */,
 				43BC271A1F2F58D7000C3ECD /* UIColor+Addition.m in Sources */,
 				4304ED631F2E02F100F009EB /* NSImage+WebCache.m in Sources */,
 				4304ED5A1F2E02F100F009EB /* MASLayoutConstraint.m in Sources */,
 				4304ED671F2E02F100F009EB /* SDWebImageDecoder.m in Sources */,
+				43F8325A1F301241000E5A18 /* ShopHeaderView.m in Sources */,
 				4304ED6F1F2E02F100F009EB /* UIImage+WebP.m in Sources */,
 				4304ED661F2E02F100F009EB /* SDWebImageCompat.m in Sources */,
 				4304ED571F2E02F100F009EB /* MASCompositeConstraint.m in Sources */,

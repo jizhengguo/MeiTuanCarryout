@@ -14,6 +14,7 @@
 #import "ShopOrderController.h"
 #import "ShopCommentController.h"
 #import "ShopInfoController.h"
+#import "ShopHeaderView.h"
 
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
@@ -71,9 +72,9 @@
 #pragma mark - 设置头部视图
 -(void)settingHeaderView{
     //创建头部视图
-    UIView *hesderView = [[UIView alloc] init];
+    ShopHeaderView *hesderView = [[ShopHeaderView alloc] init];
     //添加背景颜色
-    hesderView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    hesderView.backgroundColor = [UIColor orangeColor];
     //将头部视图添加到父控件上
     [self.view addSubview:hesderView];
     //添加约束
@@ -155,8 +156,11 @@
 }
 #pragma mark - 设置监听方法
 -(void)buttonClick:(UIButton *)button{
-    //设置黄条位置
-    _yellowView.transform = CGAffineTransformMakeTranslation(button.tag * button.bounds.size.width, 0);
+    [UIView animateWithDuration:0.25 animations:^{
+        _shopScrollView.contentOffset = CGPointMake(button.tag * _shopScrollView.bounds.size.width, 0);
+        //设置黄条位置
+        _yellowView.transform = CGAffineTransformMakeTranslation(button.tag * button.bounds.size.width, 0);
+    }];
     //判断联动
     for (NSInteger i = 0; i < _shopTagView.subviews.count-1; i++) {
         if (_shopTagView.subviews[i].tag == button.tag) {
@@ -165,9 +169,6 @@
             ((UIButton *)_shopTagView.subviews[i]).titleLabel.font = [UIFont systemFontOfSize:14];
         }
     }
-    [UIView animateWithDuration:0.5 animations:^{
-        _shopScrollView.contentOffset = CGPointMake(button.tag * _shopScrollView.bounds.size.width, 0);
-    }];
 }
 #pragma mark - 设置滚动视图
 -(void)settingShopScrollView{
