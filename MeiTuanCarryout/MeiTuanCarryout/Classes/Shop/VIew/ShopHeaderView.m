@@ -9,13 +9,18 @@
 #import "ShopHeaderView.h"
 #import "Masonry.h"
 #import "UILabel+Addition.h"
+#import "UIImageView+WebCache.h"
+#import "shopHeaderViewModel.h"
+#import "LoopViewModel.h"
+#import "loopView.h"
+#import "DushView.h"
 
 @interface ShopHeaderView ()
 //背景图片
 @property (nonatomic, weak) UIImageView *backGroundImage;
 
 //滚动视图
-@property (nonatomic, weak) UIView *loopView;
+@property (nonatomic, weak) loopView *loopView;
 
 //头像视图
 @property (nonatomic, weak) UIImageView *avadarView;
@@ -30,23 +35,23 @@
 
 @implementation ShopHeaderView
 
--(void)drawRect:(CGRect)rect{
-    //开启上下文
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    //设置初始点
-    CGContextMoveToPoint(ctx,16, CGRectGetMinY(_loopView.frame)-8);
-    //设置结束点
-    CGContextAddLineToPoint(ctx,self.bounds.size.width,  CGRectGetMinY(_loopView.frame)-8);
-    //设置为虚线
-    CGFloat lengths[] = {2,2};
-    CGContextSetLineDash(ctx, 0, lengths, 2);
-    //设置虚线颜色
-    [[UIColor whiteColor] set];
-    
-    //渲染
-    CGContextStrokePath(ctx);
-    
-}
+//-(void)drawRect:(CGRect)rect{
+//    //开启上下文
+//    CGContextRef ctx = UIGraphicsGetCurrentContext();
+//    //设置初始点
+//    CGContextMoveToPoint(ctx,16, CGRectGetMinY(_loopView.frame)-8);
+//    //设置结束点
+//    CGContextAddLineToPoint(ctx,self.bounds.size.width,  CGRectGetMinY(_loopView.frame)-8);
+//    //设置为虚线
+//    CGFloat lengths[] = {2,2};
+//    CGContextSetLineDash(ctx, 0, lengths, 2);
+//    //设置虚线颜色
+//    [[UIColor whiteColor] set];
+//    
+//    //渲染
+//    CGContextStrokePath(ctx);
+//    
+//}
 
 -(void)awakeFromNib {
     [super awakeFromNib];
@@ -67,8 +72,6 @@
     //创建背景图片
     UIImageView *backGroundImage = [[UIImageView alloc]init];
     
-    backGroundImage.backgroundColor = [UIColor blueColor];
-    
     [self addSubview:backGroundImage];
     
     [backGroundImage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,20 +79,43 @@
     }];
     
     _backGroundImage = backGroundImage;
+    
     //从下向上布局,创建滚动条
     
-    UIView *loopView = [[UIView alloc]init];
-    loopView.backgroundColor = [UIColor redColor];
-    [self addSubview:loopView];
+    loopView *shopLoopView = [[loopView alloc]init];
+//    shopLoopView.backgroundColor = [UIColor redColor];
+    [self addSubview:shopLoopView];
     //添加约束
-    [loopView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [shopLoopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.offset(-8);
         make.left.offset(16);
         make.right.offset(-16);
         make.height.offset(20);
     }];
     
-    _loopView = loopView;
+    UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_arrow_white"]];
+    
+    [shopLoopView addSubview:arrowView];
+    
+    [arrowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(0);
+        make.centerY.offset(0);
+    }];
+
+    
+    _loopView = shopLoopView;
+    
+    //创建一个虚线View
+    DushView *dushView = [[DushView alloc] init];
+    
+    [self addSubview:dushView];
+    
+    [dushView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.offset(0);
+        make.bottom.equalTo(shopLoopView.mas_top).offset(-8);
+        make.height.offset(2);
+    }];
+    dushView.backgroundColor = [UIColor clearColor];
     
     //创建头像
     UIImageView *avadarView = [[UIImageView alloc]init];
@@ -105,8 +131,8 @@
     avadarView.contentMode = UIViewContentModeScaleAspectFill;
     //添加约束
     [avadarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(loopView.mas_top).offset(-16);
-        make.left.equalTo(loopView).offset(0);
+        make.bottom.equalTo(shopLoopView.mas_top).offset(-16);
+        make.left.equalTo(shopLoopView).offset(0);
         make.width.height.offset(64);
     }];
     
@@ -140,31 +166,57 @@
 //    
 //    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     //添加无线循环
-    [self animation];
+//    [self animation];
+    
 }
 
--(void)animation{
-    [UIView transitionWithView:_loopView duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
-        if (_loopView.backgroundColor == [UIColor redColor]) {
-            
-            _loopView.backgroundColor = [UIColor yellowColor];
-        }else if(_loopView.backgroundColor == [UIColor yellowColor]){
-            _loopView.backgroundColor = [UIColor redColor];
-            
-        }
-    } completion:^(BOOL finished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self animation];
-        });
-    }];
+//-(void)animation{
+//    [UIView transitionWithView:_loopView duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
+//        if (_loopView.backgroundColor == [UIColor redColor]) {
+//            
+//            _loopView.backgroundColor = [UIColor yellowColor];
+//        }else if(_loopView.backgroundColor == [UIColor yellowColor]){
+//            _loopView.backgroundColor = [UIColor redColor];
+//            
+//        }
+//    } completion:^(BOOL finished) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self animation];
+//        });
+//    }];
+//
+//}
 
+//-(void)layoutSubviews{
+//    [self setNeedsDisplay];
+//}
+
+-(void)setModel:(shopHeaderViewModel *)model{
+    
+    _model = model;
+    //背景图片
+    NSString *backImageStr = [model.poi_back_pic_url stringByDeletingPathExtension];
+    [ _backGroundImage sd_setImageWithURL:[NSURL URLWithString:backImageStr]];
+    
+    //头像视图
+    NSString *avadarStr = [model.pic_url stringByDeletingPathExtension];
+    [_avadarView sd_setImageWithURL:[NSURL URLWithString:avadarStr]];
+    
+    //店名label
+    _nameLabel.text = model.name;
+    
+    //广告label
+    _bulletinLabel.text = model.bulletin;
+    
+    NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:model.discounts2.count];
+    for (NSDictionary *dict in model.discounts2) {
+        LoopViewModel *loopViewModel = [LoopViewModel loopViewModelWithDict:dict];
+        [arrM addObject:loopViewModel];
+    }
+    _loopView.loopViewModel = arrM;
+    
+    
 }
-
--(void)layoutSubviews{
-    [self setNeedsDisplay];
-}
-
-
 
 
 

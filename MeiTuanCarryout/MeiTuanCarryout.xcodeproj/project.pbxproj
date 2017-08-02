@@ -64,6 +64,7 @@
 		43F832601F3089E3000E5A18 /* shopHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8325F1F3089E3000E5A18 /* shopHeaderViewModel.m */; };
 		43F832631F3089FC000E5A18 /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832621F3089FC000E5A18 /* LoopViewModel.m */; };
 		43F832651F308AD7000E5A18 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 43F832641F308AD7000E5A18 /* food.json */; };
+		43F8326E1F315E9A000E5A18 /* DushView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8326D1F315E9A000E5A18 /* DushView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,8 @@
 		43F832611F3089FB000E5A18 /* LoopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopViewModel.h; sourceTree = "<group>"; };
 		43F832621F3089FC000E5A18 /* LoopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopViewModel.m; sourceTree = "<group>"; };
 		43F832641F308AD7000E5A18 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
+		43F8326C1F315E9A000E5A18 /* DushView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DushView.h; sourceTree = "<group>"; };
+		43F8326D1F315E9A000E5A18 /* DushView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DushView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -515,6 +518,8 @@
 				43F832591F301241000E5A18 /* ShopHeaderView.m */,
 				43F8325B1F303D64000E5A18 /* loopView.h */,
 				43F8325C1F303D64000E5A18 /* loopView.m */,
+				43F8326C1F315E9A000E5A18 /* DushView.h */,
+				43F8326D1F315E9A000E5A18 /* DushView.m */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -665,6 +670,7 @@
 				4304ED731F2E02F100F009EB /* UIView+WebCacheOperation.m in Sources */,
 				4304ED5F1F2E02F100F009EB /* View+MASAdditions.m in Sources */,
 				4304ED4E1F2E02F100F009EB /* JZGBasicController.m in Sources */,
+				43F8326E1F315E9A000E5A18 /* DushView.m in Sources */,
 				43BC27141F2F582A000C3ECD /* ShopOrderController.m in Sources */,
 				4304ED5B1F2E02F100F009EB /* MASViewAttribute.m in Sources */,
 				43F832601F3089E3000E5A18 /* shopHeaderViewModel.m in Sources */,

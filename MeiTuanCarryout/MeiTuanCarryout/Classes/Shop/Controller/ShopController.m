@@ -15,19 +15,22 @@
 #import "ShopCommentController.h"
 #import "ShopInfoController.h"
 #import "ShopHeaderView.h"
+#import "shopHeaderViewModel.h"
 
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
 
 @interface ShopController ()<UIScrollViewDelegate>
 //创建头部视图
-@property (nonatomic, weak) UIView *headerView;
+@property (nonatomic, weak) ShopHeaderView *headerView;
 //创建标签视图
 @property (nonatomic, weak) UIView *shopTagView;
 //创建滚动视图
 @property (nonatomic, weak) UIScrollView *shopScrollView;
 //创建黄色指示View
 @property (nonatomic, weak) UIView *yellowView;
+//头部视图数据
+@property (nonatomic, strong) shopHeaderViewModel *shopHeaderViewModel;
 
 
 
@@ -37,7 +40,7 @@
 @implementation ShopController
 
 - (void)viewDidLoad {
-    
+    [self loadShopControllerData];
     [self setupUI];
     
     [super viewDidLoad];
@@ -82,6 +85,8 @@
         make.top.left.right.offset(0);
         make.height.offset(180);
     }];
+    
+    hesderView.model = _shopHeaderViewModel;
     _headerView = hesderView;
 
 }
@@ -282,6 +287,25 @@
         }
     }
 }
+#pragma mark - 加载数据
+-(void)loadShopControllerData{
+    //创建一个路径
+    NSURL *url = [[NSBundle mainBundle] URLForAuxiliaryExecutable:@"food.json"];
+    //解析成nsdata
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    //JSON
+    NSDictionary *arr= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSDictionary *shopHeaderViewDict = arr[@"data"][@"poi_info"];
+    
+    //字典转模型
+    shopHeaderViewModel *model= [shopHeaderViewModel shopHeaderVIewModelWithDict:shopHeaderViewDict];
+    //保存数据
+    _shopHeaderViewModel = model;
+    
+    
+}
+
+
 
 
 

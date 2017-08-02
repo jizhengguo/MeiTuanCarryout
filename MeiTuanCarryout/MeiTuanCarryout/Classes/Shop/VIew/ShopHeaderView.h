@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class shopHeaderViewModel;
+
 @interface ShopHeaderView : UIView
+
+@property (nonatomic, strong) shopHeaderViewModel *model;
 
 @end

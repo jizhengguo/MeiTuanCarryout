@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoopViewModel.h"
 
 @interface loopView : UIView
+
+@property (nonatomic, strong) NSArray <LoopViewModel *>*loopViewModel;
 
 @end
