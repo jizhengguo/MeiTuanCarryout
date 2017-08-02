@@ -73,13 +73,10 @@
     
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     //添加无线循环
-    
-
-    
-    
 }
-
+//设置滚动效果
 -(void)animation{
+    //设置转场动画
     [UIView transitionWithView:self duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
         
         
@@ -98,7 +95,7 @@
     
 }
 
-
+//传值
 -(void)setLoopViewModel:(NSArray<LoopViewModel *> *)loopViewModel{
     _loopViewModel = loopViewModel;
     NSURL *url = [NSURL URLWithString:loopViewModel[0].icon_url];

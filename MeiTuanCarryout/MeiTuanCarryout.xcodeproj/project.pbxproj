@@ -56,7 +56,6 @@
 		43BC27111F2F582A000C3ECD /* ShopCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27061F2F582A000C3ECD /* ShopCommentController.m */; };
 		43BC27121F2F582A000C3ECD /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27081F2F582A000C3ECD /* ShopController.m */; };
 		43BC27131F2F582A000C3ECD /* ShopInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC270B1F2F582A000C3ECD /* ShopInfoController.m */; };
-		43BC27141F2F582A000C3ECD /* ShopOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC270E1F2F582A000C3ECD /* ShopOrderController.m */; };
 		43BC27171F2F58C7000C3ECD /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27161F2F58C7000C3ECD /* UILabel+Addition.m */; };
 		43BC271A1F2F58D7000C3ECD /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27191F2F58D7000C3ECD /* UIColor+Addition.m */; };
 		43F8325A1F301241000E5A18 /* ShopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832591F301241000E5A18 /* ShopHeaderView.m */; };
@@ -65,6 +64,9 @@
 		43F832631F3089FC000E5A18 /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832621F3089FC000E5A18 /* LoopViewModel.m */; };
 		43F832651F308AD7000E5A18 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 43F832641F308AD7000E5A18 /* food.json */; };
 		43F8326E1F315E9A000E5A18 /* DushView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8326D1F315E9A000E5A18 /* DushView.m */; };
+		43F832751F31E3A5000E5A18 /* ShopOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832711F31E3A5000E5A18 /* ShopOrderController.m */; };
+		43F832781F31F672000E5A18 /* ShopOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F832771F31F672000E5A18 /* ShopOrderModel.m */; };
+		43F8327B1F31F7A0000E5A18 /* ShopFoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8327A1F31F7A0000E5A18 /* ShopFoodModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,8 +193,6 @@
 		43BC27081F2F582A000C3ECD /* ShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopController.m; sourceTree = "<group>"; };
 		43BC270A1F2F582A000C3ECD /* ShopInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoController.h; sourceTree = "<group>"; };
 		43BC270B1F2F582A000C3ECD /* ShopInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoController.m; sourceTree = "<group>"; };
-		43BC270D1F2F582A000C3ECD /* ShopOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderController.h; sourceTree = "<group>"; };
-		43BC270E1F2F582A000C3ECD /* ShopOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderController.m; sourceTree = "<group>"; };
 		43BC27151F2F58C7000C3ECD /* UILabel+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Addition.h"; sourceTree = "<group>"; };
 		43BC27161F2F58C7000C3ECD /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addition.m"; sourceTree = "<group>"; };
 		43BC27181F2F58D7000C3ECD /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
@@ -208,6 +208,12 @@
 		43F832641F308AD7000E5A18 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
 		43F8326C1F315E9A000E5A18 /* DushView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DushView.h; sourceTree = "<group>"; };
 		43F8326D1F315E9A000E5A18 /* DushView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DushView.m; sourceTree = "<group>"; };
+		43F832701F31E3A5000E5A18 /* ShopOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderController.h; sourceTree = "<group>"; };
+		43F832711F31E3A5000E5A18 /* ShopOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderController.m; sourceTree = "<group>"; };
+		43F832761F31F672000E5A18 /* ShopOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderModel.h; sourceTree = "<group>"; };
+		43F832771F31F672000E5A18 /* ShopOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderModel.m; sourceTree = "<group>"; };
+		43F832791F31F7A0000E5A18 /* ShopFoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopFoodModel.h; sourceTree = "<group>"; };
+		43F8327A1F31F7A0000E5A18 /* ShopFoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopFoodModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,8 +500,10 @@
 		43BC270C1F2F582A000C3ECD /* ShopOredr */ = {
 			isa = PBXGroup;
 			children = (
-				43BC270D1F2F582A000C3ECD /* ShopOrderController.h */,
-				43BC270E1F2F582A000C3ECD /* ShopOrderController.m */,
+				43F8326F1F31E3A5000E5A18 /* Controller */,
+				43F832721F31E3A5000E5A18 /* Model */,
+				43F832731F31E3A5000E5A18 /* Other */,
+				43F832741F31E3A5000E5A18 /* View */,
 			);
 			path = ShopOredr;
 			sourceTree = "<group>";
@@ -522,6 +530,40 @@
 				43F8326D1F315E9A000E5A18 /* DushView.m */,
 			);
 			path = VIew;
+			sourceTree = "<group>";
+		};
+		43F8326F1F31E3A5000E5A18 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				43F832701F31E3A5000E5A18 /* ShopOrderController.h */,
+				43F832711F31E3A5000E5A18 /* ShopOrderController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		43F832721F31E3A5000E5A18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43F832761F31F672000E5A18 /* ShopOrderModel.h */,
+				43F832771F31F672000E5A18 /* ShopOrderModel.m */,
+				43F832791F31F7A0000E5A18 /* ShopFoodModel.h */,
+				43F8327A1F31F7A0000E5A18 /* ShopFoodModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43F832731F31E3A5000E5A18 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		43F832741F31E3A5000E5A18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -663,6 +705,7 @@
 				4304ED5E1F2E02F100F009EB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				4304ED651F2E02F100F009EB /* SDImageCacheConfig.m in Sources */,
 				4304ED4D1F2E02F100F009EB /* FoodDetailController.m in Sources */,
+				43F832751F31E3A5000E5A18 /* ShopOrderController.m in Sources */,
 				4304ED5C1F2E02F100F009EB /* MASViewConstraint.m in Sources */,
 				4304ED6C1F2E02F100F009EB /* UIButton+WebCache.m in Sources */,
 				43F832631F3089FC000E5A18 /* LoopViewModel.m in Sources */,
@@ -671,12 +714,12 @@
 				4304ED5F1F2E02F100F009EB /* View+MASAdditions.m in Sources */,
 				4304ED4E1F2E02F100F009EB /* JZGBasicController.m in Sources */,
 				43F8326E1F315E9A000E5A18 /* DushView.m in Sources */,
-				43BC27141F2F582A000C3ECD /* ShopOrderController.m in Sources */,
 				4304ED5B1F2E02F100F009EB /* MASViewAttribute.m in Sources */,
 				43F832601F3089E3000E5A18 /* shopHeaderViewModel.m in Sources */,
 				4304ED701F2E02F100F009EB /* UIImageView+HighlightedWebCache.m in Sources */,
 				4304ED591F2E02F100F009EB /* MASConstraintMaker.m in Sources */,
 				4304ED641F2E02F100F009EB /* SDImageCache.m in Sources */,
+				43F832781F31F672000E5A18 /* ShopOrderModel.m in Sources */,
 				4304ED6A1F2E02F100F009EB /* SDWebImageManager.m in Sources */,
 				43BC27121F2F582A000C3ECD /* ShopController.m in Sources */,
 				4304ED4F1F2E02F100F009EB /* JZGNavigationController.m in Sources */,
@@ -703,6 +746,7 @@
 				4304ED661F2E02F100F009EB /* SDWebImageCompat.m in Sources */,
 				4304ED571F2E02F100F009EB /* MASCompositeConstraint.m in Sources */,
 				4304ED621F2E02F100F009EB /* NSData+ImageContentType.m in Sources */,
+				43F8327B1F31F7A0000E5A18 /* ShopFoodModel.m in Sources */,
 				4304ED681F2E02F100F009EB /* SDWebImageDownloader.m in Sources */,
 				4304ED551F2E02F100F009EB /* AFURLResponseSerialization.m in Sources */,
 				4304ED561F2E02F100F009EB /* AFURLSessionManager.m in Sources */,

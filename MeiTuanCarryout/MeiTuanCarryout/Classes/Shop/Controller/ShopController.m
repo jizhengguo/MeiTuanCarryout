@@ -16,6 +16,7 @@
 #import "ShopInfoController.h"
 #import "ShopHeaderView.h"
 #import "shopHeaderViewModel.h"
+#import "ShopOrderModel.h"
 
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
@@ -31,6 +32,8 @@
 @property (nonatomic, weak) UIView *yellowView;
 //头部视图数据
 @property (nonatomic, strong) shopHeaderViewModel *shopHeaderViewModel;
+//点餐视图
+@property (nonatomic, weak) ShopOrderController *shopOrderVC;
 
 
 
@@ -189,6 +192,7 @@
     }];
     
     ShopOrderController *vc1 = [[ShopOrderController alloc]init];
+    _shopOrderVC = vc1;
     ShopCommentController *vc2 = [[ShopCommentController alloc]init];
     ShopInfoController *vc3 = [[ShopInfoController alloc]init];
     
@@ -296,11 +300,25 @@
     //JSON
     NSDictionary *arr= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSDictionary *shopHeaderViewDict = arr[@"data"][@"poi_info"];
-    
     //字典转模型
     shopHeaderViewModel *model= [shopHeaderViewModel shopHeaderVIewModelWithDict:shopHeaderViewDict];
     //保存数据
     _shopHeaderViewModel = model;
+    
+    
+    //点餐界面数据
+    NSArray *shopOrderArr = arr[@"data"][@"food_spu_tags"];
+    
+    NSMutableArray *shopOrderArrM = [NSMutableArray arrayWithCapacity:shopOrderArr.count];
+    
+    for (NSDictionary *dict in shopOrderArr) {
+        ShopOrderModel *model = [ShopOrderModel shopOrderModelWithDict:dict];
+        [shopOrderArrM addObject:model];
+    }
+    
+    
+    
+    _shopOrderVC.shopOrderModel = shopOrderArrM;
     
     
 }

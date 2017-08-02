@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class ShopOrderModel;
+
+
 @interface ShopOrderController : UIViewController
+
+@property (nonatomic, strong) NSArray<ShopOrderModel *> *shopOrderModel;
+
+
 
 @end

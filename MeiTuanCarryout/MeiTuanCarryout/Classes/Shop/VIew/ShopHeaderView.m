@@ -35,24 +35,6 @@
 
 @implementation ShopHeaderView
 
-//-(void)drawRect:(CGRect)rect{
-//    //开启上下文
-//    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    //设置初始点
-//    CGContextMoveToPoint(ctx,16, CGRectGetMinY(_loopView.frame)-8);
-//    //设置结束点
-//    CGContextAddLineToPoint(ctx,self.bounds.size.width,  CGRectGetMinY(_loopView.frame)-8);
-//    //设置为虚线
-//    CGFloat lengths[] = {2,2};
-//    CGContextSetLineDash(ctx, 0, lengths, 2);
-//    //设置虚线颜色
-//    [[UIColor whiteColor] set];
-//    
-//    //渲染
-//    CGContextStrokePath(ctx);
-//    
-//}
-
 -(void)awakeFromNib {
     [super awakeFromNib];
     
@@ -119,7 +101,7 @@
     
     //创建头像
     UIImageView *avadarView = [[UIImageView alloc]init];
-    avadarView.backgroundColor = [UIColor yellowColor];
+//    avadarView.backgroundColor = [UIColor yellowColor];
     [self addSubview:avadarView];
     //切圆角
     avadarView.layer.cornerRadius = 32;
@@ -161,35 +143,7 @@
     
     _bulletinLabel = bulletinLabel;
     
-    //设置运行循环,为啥不行??
-//    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(animation) userInfo:nil repeats:nil];
-//    
-//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    //添加无线循环
-//    [self animation];
-    
 }
-
-//-(void)animation{
-//    [UIView transitionWithView:_loopView duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
-//        if (_loopView.backgroundColor == [UIColor redColor]) {
-//            
-//            _loopView.backgroundColor = [UIColor yellowColor];
-//        }else if(_loopView.backgroundColor == [UIColor yellowColor]){
-//            _loopView.backgroundColor = [UIColor redColor];
-//            
-//        }
-//    } completion:^(BOOL finished) {
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self animation];
-//        });
-//    }];
-//
-//}
-
-//-(void)layoutSubviews{
-//    [self setNeedsDisplay];
-//}
 
 -(void)setModel:(shopHeaderViewModel *)model{
     
