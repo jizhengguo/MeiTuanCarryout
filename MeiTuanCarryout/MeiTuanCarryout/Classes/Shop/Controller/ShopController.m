@@ -33,7 +33,7 @@
 //头部视图数据
 @property (nonatomic, strong) shopHeaderViewModel *shopHeaderViewModel;
 //点餐视图
-@property (nonatomic, weak) ShopOrderController *shopOrderVC;
+@property (nonatomic, strong) NSArray<ShopOrderModel *> *shopOrderModel;
 
 
 
@@ -44,6 +44,7 @@
 
 - (void)viewDidLoad {
     [self loadShopControllerData];
+    
     [self setupUI];
     
     [super viewDidLoad];
@@ -192,7 +193,7 @@
     }];
     
     ShopOrderController *vc1 = [[ShopOrderController alloc]init];
-    _shopOrderVC = vc1;
+    vc1.shopOrderModel = _shopOrderModel;
     ShopCommentController *vc2 = [[ShopCommentController alloc]init];
     ShopInfoController *vc3 = [[ShopInfoController alloc]init];
     
@@ -316,9 +317,7 @@
         [shopOrderArrM addObject:model];
     }
     
-    
-    
-    _shopOrderVC.shopOrderModel = shopOrderArrM;
+    _shopOrderModel = shopOrderArrM;
     
     
 }

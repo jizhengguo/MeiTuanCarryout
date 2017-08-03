@@ -7,6 +7,7 @@
 //
 
 #import "shopHeaderViewModel.h"
+#import "LoopViewModel.h"
 
 @implementation shopHeaderViewModel
 + (instancetype)shopHeaderVIewModelWithDict:(NSDictionary *)dict {
@@ -15,6 +16,17 @@
     [obj setValuesForKeysWithDictionary:dict];
     
     return obj;
+}
+
+-(void)setDiscounts2:(NSArray *)discounts2{
+   
+    NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:discounts2.count];
+    for (NSDictionary *dict in discounts2) {
+        LoopViewModel *loopViewModel = [LoopViewModel loopViewModelWithDict:dict];
+        [arrM addObject:loopViewModel];
+    }
+    _discounts2 = arrM;
+
 }
 
 -(void)setValue:(id)value forUndefinedKey:(nonnull NSString *)key{

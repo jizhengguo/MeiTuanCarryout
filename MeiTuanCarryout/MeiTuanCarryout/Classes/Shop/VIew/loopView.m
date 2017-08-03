@@ -14,13 +14,13 @@
 
 @interface loopView ()
 
-//小图标
-@property (nonatomic, weak) UIImageView *iconView;
-//滚动消息
-@property (nonatomic, weak) UILabel *infoLabel;
-
-//索引
-@property (nonatomic, assign) NSInteger index;
+////小图标
+//@property (nonatomic, weak) UIImageView *iconView;
+////滚动消息
+//@property (nonatomic, weak) UILabel *infoLabel;
+//
+////索引
+//@property (nonatomic, assign) NSInteger index;
 
 
 
@@ -68,41 +68,51 @@
     _infoLabel = infoLabel;
     
     
-    
-        NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(animation) userInfo:nil repeats:YES];
-    
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    //添加无线循环
+//    
+//        NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(animation) userInfo:nil repeats:YES];
+//    
+//        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//    //添加无线循环
 }
 //设置滚动效果
--(void)animation{
-    //设置转场动画
-    [UIView transitionWithView:self duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
-        
-        
-        _index = (_index + 7) % 7;
-        
-            NSURL *url = [NSURL URLWithString:_loopViewModel[_index].icon_url];
-            [_iconView sd_setImageWithURL:url];
-            
-            _infoLabel.text = _loopViewModel[_index].info;
-        
-        _index++;
-      
-    } completion:nil];
-    
-    
-    
-}
+//-(void)animation{
+//    //设置转场动画
+//    [UIView transitionWithView:self duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
+//        
+//        
+//        _index = (_index + 7) % 7;
+//        
+//            NSURL *url = [NSURL URLWithString:_loopViewModel[_index].icon_url];
+//            [_iconView sd_setImageWithURL:url];
+//            
+//            _infoLabel.text = _loopViewModel[_index].info;
+//        
+//        _index++;
+//      
+//    } completion:nil];
+//    
+//    
+//    
+//}
 
 //传值
--(void)setLoopViewModel:(NSArray<LoopViewModel *> *)loopViewModel{
+
+-(void)setLoopViewModel:(LoopViewModel *)loopViewModel{
     _loopViewModel = loopViewModel;
-    NSURL *url = [NSURL URLWithString:loopViewModel[0].icon_url];
+    NSURL *url = [NSURL URLWithString:loopViewModel.icon_url];
     [_iconView sd_setImageWithURL:url];
     
-    _infoLabel.text = loopViewModel[0].info;
+    _infoLabel.text = loopViewModel.info;
+
     
-    [self animation];
 }
+//-(void)setLoopViewModel:(NSArray<LoopViewModel *> *)loopViewModel{
+//    _loopViewModel = loopViewModel;
+//    NSURL *url = [NSURL URLWithString:loopViewModel[0].icon_url];
+//    [_iconView sd_setImageWithURL:url];
+//    
+//    _infoLabel.text = loopViewModel[0].info;
+//    
+////    [self animation];
+//}
 @end

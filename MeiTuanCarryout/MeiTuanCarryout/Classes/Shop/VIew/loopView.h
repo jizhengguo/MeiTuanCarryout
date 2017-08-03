@@ -11,6 +11,11 @@
 
 @interface loopView : UIView
 
-@property (nonatomic, strong) NSArray <LoopViewModel *>*loopViewModel;
+//小图标
+@property (nonatomic, weak) UIImageView *iconView;
+//滚动消息
+@property (nonatomic, weak) UILabel *infoLabel;
+
+@property (nonatomic, strong) LoopViewModel *loopViewModel;
 
 @end

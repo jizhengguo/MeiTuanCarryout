@@ -9,6 +9,10 @@
 #import "ShopOrderController.h"
 #import "Masonry.h"
 #import "ShopOrderModel.h"
+#import "ShopFoodModel.h"
+#import "ShopOrderCell.h"
+#import "ShopFoodViewCell.h"
+#import "ShopOrderHeaderView.h"
 
 @interface ShopOrderController ()<UITableViewDataSource , UITableViewDelegate>
 
@@ -19,6 +23,7 @@
 
 static NSString *shopOrderCellID = @"shopOrderCellID";
 static NSString *shopFoodCellID = @"shopFoodCellID";
+static NSString *shopHeaderCellID = @"shopHeaderCellID";
 
 @implementation ShopOrderController
 
@@ -50,8 +55,12 @@ static NSString *shopFoodCellID = @"shopFoodCellID";
     cotegoryTabelView.delegate = self;
     cotegoryTabelView.dataSource = self;
     
+    cotegoryTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    cotegoryTabelView.rowHeight = 60;
+    
     //注册
-    [cotegoryTabelView registerClass:[UITableViewCell class] forCellReuseIdentifier:shopOrderCellID];
+    [cotegoryTabelView registerClass:[ShopOrderCell class] forCellReuseIdentifier:shopOrderCellID];
     
     _cotegoryTabelView = cotegoryTabelView;
 }
@@ -67,7 +76,13 @@ static NSString *shopFoodCellID = @"shopFoodCellID";
         
     }];
     
-    [foodTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:shopFoodCellID];
+    [foodTableView registerNib:[UINib nibWithNibName:@"ShopFoodViewCell" bundle:nil] forCellReuseIdentifier:shopFoodCellID];
+    
+    foodTableView.estimatedRowHeight = 150;
+    //注册头部视图
+    [foodTableView registerClass:[ShopOrderHeaderView class] forHeaderFooterViewReuseIdentifier:shopHeaderCellID];
+    
+    foodTableView.sectionHeaderHeight = 30;
     
     foodTableView.delegate = self;
     foodTableView.dataSource = self;
@@ -91,14 +106,37 @@ static NSString *shopFoodCellID = @"shopFoodCellID";
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (tableView == _cotegoryTabelView) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:shopOrderCellID forIndexPath:indexPath];
+        
+        ShopOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:shopOrderCellID forIndexPath:indexPath];
         
         cell.textLabel.text = _shopOrderModel[indexPath.row].name;
         
         return cell;
     }
-    return nil;
+    
+    ShopFoodViewCell *cell = [tableView dequeueReusableCellWithIdentifier:shopFoodCellID forIndexPath:indexPath];
+    
+//    ShopFoodModel *foodModel=_shopOrderModel[indexPath.section].spus[indexPath.row];
+//    cell.textLabel.text = foodModel.name;
+    return cell;
     
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    ShopOrderHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:shopHeaderCellID];
+    
+    headerView.headerText = _shopOrderModel[section].name;
+    
+    return headerView;
+}
+
+//
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//    if (tableView ==_cotegoryTabelView) {
+//        return nil;
+//    }
+//    return _shopOrderModel[section].name;
+//}
 @end

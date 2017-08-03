@@ -14,6 +14,9 @@
 #import "LoopViewModel.h"
 #import "loopView.h"
 #import "DushView.h"
+#import "ShopDetailViewController.h"
+#import "UIView+Addition.h"
+#import "ShopDetailAnimation.h"
 
 @interface ShopHeaderView ()
 //背景图片
@@ -30,6 +33,12 @@
 
 //广告label
 @property (nonatomic, weak) UILabel *bulletinLabel;
+
+//索引
+@property (nonatomic, assign) NSInteger index;
+
+//设置一个专场动画代理,必须强引用
+@property (nonatomic, strong) ShopDetailAnimation *anmination;
 
 @end
 
@@ -93,9 +102,10 @@
     [self addSubview:dushView];
     
     [dushView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.offset(0);
+        make.right.offset(0);
+        make.left.offset(16);
         make.bottom.equalTo(shopLoopView.mas_top).offset(-8);
-        make.height.offset(2);
+        make.height.offset(1);
     }];
     dushView.backgroundColor = [UIColor clearColor];
     
@@ -143,6 +153,54 @@
     
     _bulletinLabel = bulletinLabel;
     
+    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(animation) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
+    
+    [_loopView addGestureRecognizer:tap];
+    
+}
+
+-(void)animation{
+    //设置转场动画
+    [UIView transitionWithView:_loopView duration:0.25 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
+        
+        
+        _index = (_index + 7) % 7;
+        
+        NSURL *url = [NSURL URLWithString:_model.discounts2[_index].icon_url];
+        [_loopView.iconView sd_setImageWithURL:url];
+        
+        _loopView.infoLabel.text = _model.discounts2[_index].info;
+        
+        _index++;
+        
+    } completion:nil];
+    
+    
+    
+}
+
+
+-(void)tapGesture:(UITapGestureRecognizer *)tap{
+    
+    ShopDetailViewController *foodDetail = [[ShopDetailViewController alloc] init];
+    
+    
+    foodDetail.shopPOIInfoModel = _model;
+    foodDetail.view.backgroundColor = [UIColor orangeColor];
+    
+    foodDetail.modalPresentationStyle = UIModalPresentationCustom;
+    
+    _anmination = [[ShopDetailAnimation alloc] init];
+    
+    foodDetail.transitioningDelegate = _anmination;
+    
+    [self.viewControler presentViewController:foodDetail animated:YES completion:nil];
+    
 }
 
 -(void)setModel:(shopHeaderViewModel *)model{
@@ -162,12 +220,12 @@
     //广告label
     _bulletinLabel.text = model.bulletin;
     
-    NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:model.discounts2.count];
-    for (NSDictionary *dict in model.discounts2) {
-        LoopViewModel *loopViewModel = [LoopViewModel loopViewModelWithDict:dict];
-        [arrM addObject:loopViewModel];
-    }
-    _loopView.loopViewModel = arrM;
+//    NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:model.discounts2.count];
+//    for (NSDictionary *dict in model.discounts2) {
+//        LoopViewModel *loopViewModel = [LoopViewModel loopViewModelWithDict:dict];
+//        [arrM addObject:loopViewModel];
+//    }
+    _loopView.loopViewModel = model.discounts2[0];
     
     
 }

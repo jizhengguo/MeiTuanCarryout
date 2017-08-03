@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class LoopViewModel;
 
 @interface shopHeaderViewModel : NSObject
 
@@ -19,7 +20,16 @@
 //广告
 @property (nonatomic, copy) NSString *bulletin;
 //轮播广告
-@property (nonatomic, strong) NSArray *discounts2;
+@property (nonatomic, strong) NSArray<LoopViewModel *> *discounts2;
+
+/// 起送价
+@property (nonatomic, copy) NSString *min_price_tip;
+
+/// 配送费
+@property (nonatomic, copy) NSString *shipping_fee_tip;
+
+/// 配送时间
+@property (nonatomic, copy) NSString *delivery_time_tip;
 
 + (instancetype)shopHeaderVIewModelWithDict:(NSDictionary *)dict;
 
