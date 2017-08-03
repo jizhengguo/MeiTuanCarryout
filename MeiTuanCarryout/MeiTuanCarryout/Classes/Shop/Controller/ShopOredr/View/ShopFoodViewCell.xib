@@ -12,14 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ShopFoodViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+        <tableViewCell contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ShopFoodViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_food_loading" translatesAutoresizingMaskIntoConstraints="NO" id="iKH-x7-RCD">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_food_loading" translatesAutoresizingMaskIntoConstraints="NO" id="iKH-x7-RCD">
                         <rect key="frame" x="8" y="8" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="LFF-Gs-lQi"/>
@@ -32,8 +32,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精品家常菜十大畅菜之一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1O7-oO-PdK">
-                        <rect key="frame" x="80" y="32.5" width="135" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精品家常菜十大畅菜之一" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1O7-oO-PdK">
+                        <rect key="frame" x="80" y="34" width="216" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 998" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6W-SQ-foN">
-                        <rect key="frame" x="80" y="74" width="47" height="20"/>
+                        <rect key="frame" x="80" y="80" width="47" height="20"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -58,21 +58,30 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="s6W-SQ-foN" firstAttribute="top" secondItem="EPQ-m4-3zK" secondAttribute="bottom" constant="2" id="90w-YD-SbS"/>
+                    <constraint firstItem="1O7-oO-PdK" firstAttribute="top" secondItem="hxR-N9-cCl" secondAttribute="bottom" constant="8" id="93j-dY-jl2"/>
+                    <constraint firstItem="EPQ-m4-3zK" firstAttribute="top" secondItem="1O7-oO-PdK" secondAttribute="bottom" constant="8" id="APh-4e-6fa"/>
                     <constraint firstItem="hxR-N9-cCl" firstAttribute="leading" secondItem="iKH-x7-RCD" secondAttribute="trailing" constant="8" id="Bj4-dt-vEc"/>
-                    <constraint firstItem="1O7-oO-PdK" firstAttribute="leading" secondItem="hxR-N9-cCl" secondAttribute="leading" id="K82-Re-3cG"/>
-                    <constraint firstItem="1O7-oO-PdK" firstAttribute="centerY" secondItem="iKH-x7-RCD" secondAttribute="centerY" id="KTZ-Qh-LZv"/>
-                    <constraint firstItem="EPQ-m4-3zK" firstAttribute="leading" secondItem="1O7-oO-PdK" secondAttribute="leading" id="NKL-fc-yR1"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="s6W-SQ-foN" secondAttribute="bottom" constant="-2.5" id="PcG-Ln-5CH"/>
+                    <constraint firstItem="EPQ-m4-3zK" firstAttribute="leading" secondItem="1O7-oO-PdK" secondAttribute="leading" id="Mho-pa-J3K"/>
+                    <constraint firstAttribute="bottom" secondItem="s6W-SQ-foN" secondAttribute="bottom" constant="7.5" id="Oay-Qy-bB3"/>
+                    <constraint firstItem="ozd-fH-TY2" firstAttribute="centerY" secondItem="EPQ-m4-3zK" secondAttribute="centerY" id="S2K-tt-F90"/>
                     <constraint firstItem="iKH-x7-RCD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="SO6-Xk-i3E"/>
-                    <constraint firstItem="s6W-SQ-foN" firstAttribute="leading" secondItem="EPQ-m4-3zK" secondAttribute="leading" id="T4S-et-bhx"/>
-                    <constraint firstItem="EPQ-m4-3zK" firstAttribute="bottom" secondItem="iKH-x7-RCD" secondAttribute="bottom" id="YHC-Wj-Wlh"/>
+                    <constraint firstItem="s6W-SQ-foN" firstAttribute="top" secondItem="EPQ-m4-3zK" secondAttribute="bottom" constant="8" id="SR3-VD-73t"/>
+                    <constraint firstItem="ozd-fH-TY2" firstAttribute="leading" secondItem="EPQ-m4-3zK" secondAttribute="trailing" constant="8" id="ZxY-e5-WSf"/>
                     <constraint firstItem="iKH-x7-RCD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eXL-CL-aJ2"/>
                     <constraint firstItem="hxR-N9-cCl" firstAttribute="top" secondItem="iKH-x7-RCD" secondAttribute="top" id="fp2-m2-ii7"/>
-                    <constraint firstItem="ozd-fH-TY2" firstAttribute="leading" secondItem="EPQ-m4-3zK" secondAttribute="trailing" constant="8" id="t0b-IF-SjQ"/>
-                    <constraint firstItem="ozd-fH-TY2" firstAttribute="centerY" secondItem="EPQ-m4-3zK" secondAttribute="centerY" id="xYp-2A-lot"/>
+                    <constraint firstItem="s6W-SQ-foN" firstAttribute="leading" secondItem="EPQ-m4-3zK" secondAttribute="leading" id="hdV-PQ-gzd"/>
+                    <constraint firstItem="1O7-oO-PdK" firstAttribute="leading" secondItem="hxR-N9-cCl" secondAttribute="leading" id="l4i-4G-bvh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1O7-oO-PdK" secondAttribute="trailing" constant="16" id="uRE-RY-e8b"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="1O7-oO-PdK" id="kbw-iL-vV5"/>
+                <outlet property="iconImage" destination="iKH-x7-RCD" id="UmQ-lS-eAf"/>
+                <outlet property="min_priceLabel" destination="s6W-SQ-foN" id="Scb-dd-as9"/>
+                <outlet property="month_saled_contentLabel" destination="EPQ-m4-3zK" id="Yia-i1-QbM"/>
+                <outlet property="nameLabel" destination="hxR-N9-cCl" id="eWP-Jh-JE6"/>
+                <outlet property="praise_contentLabel" destination="ozd-fH-TY2" id="neD-LM-YJl"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

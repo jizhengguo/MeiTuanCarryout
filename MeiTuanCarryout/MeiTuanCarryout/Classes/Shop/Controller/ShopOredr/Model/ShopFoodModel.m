@@ -19,7 +19,10 @@
 }
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    
+    if ([key isEqualToString:@"description"]) {
+        _description1 = value;
+    }
+
 }
 
 @end

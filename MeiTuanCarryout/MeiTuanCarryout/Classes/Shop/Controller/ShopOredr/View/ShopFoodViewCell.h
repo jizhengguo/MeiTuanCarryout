@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ShopFoodModel;
+
 @interface ShopFoodViewCell : UITableViewCell
+
+@property (nonatomic, strong) ShopFoodModel *model;
 
 @end

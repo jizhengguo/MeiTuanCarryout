@@ -118,6 +118,8 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     ShopFoodViewCell *cell = [tableView dequeueReusableCellWithIdentifier:shopFoodCellID forIndexPath:indexPath];
     
+    cell.model = _shopOrderModel[indexPath.section].spus[indexPath.row];
+    
 //    ShopFoodModel *foodModel=_shopOrderModel[indexPath.section].spus[indexPath.row];
 //    cell.textLabel.text = foodModel.name;
     return cell;

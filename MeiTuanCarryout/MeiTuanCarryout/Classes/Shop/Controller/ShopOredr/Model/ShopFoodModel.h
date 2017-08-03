@@ -12,11 +12,11 @@
 
 @property (nonatomic, copy) NSString *picture;
 
-@property (nonatomic, strong) NSNumber *min_price;
+@property (nonatomic, assign) float min_price;
 
 @property (nonatomic, copy) NSString *name;
 
-@property (nonatomic, copy) NSString *_description;
+@property (nonatomic, copy) NSString *description1;
 
 @property (nonatomic, copy) NSString *month_saled_content;
 
