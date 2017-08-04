@@ -22,6 +22,8 @@
 
 @property (nonatomic, copy) NSString *praise_content;
 
+@property (nonatomic, assign) NSInteger counts;
+
 
 + (instancetype)shopFoodModelWithDict:(NSDictionary *)dict;
 

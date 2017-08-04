@@ -77,6 +77,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="1O7-oO-PdK" id="kbw-iL-vV5"/>
                 <outlet property="iconImage" destination="iKH-x7-RCD" id="UmQ-lS-eAf"/>
+                <outlet property="layoutCount" destination="APh-4e-6fa" id="xV0-6X-1EL"/>
                 <outlet property="min_priceLabel" destination="s6W-SQ-foN" id="Scb-dd-as9"/>
                 <outlet property="month_saled_contentLabel" destination="EPQ-m4-3zK" id="Yia-i1-QbM"/>
                 <outlet property="nameLabel" destination="hxR-N9-cCl" id="eWP-Jh-JE6"/>

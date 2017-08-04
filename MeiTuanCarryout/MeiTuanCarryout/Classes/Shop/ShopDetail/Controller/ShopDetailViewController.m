@@ -94,7 +94,7 @@
     }];
     
     
-    // 店名
+    
     UILabel *shopNameLabel = [UILabel makeLabelWithText:_shopPOIInfoModel.name andTextFont:14 andTextColor:[UIColor whiteColor]];
     
     [contentView addSubview:shopNameLabel];
@@ -105,7 +105,7 @@
     }];
     
     
-    // TODO: 起送价及配送
+    
     UILabel *shopTipLabel = [UILabel makeLabelWithText:[NSString stringWithFormat:@"%@ | %@ | %@", _shopPOIInfoModel.min_price_tip, _shopPOIInfoModel.shipping_fee_tip, _shopPOIInfoModel.delivery_time_tip] andTextFont:12 andTextColor:[UIColor colorWithWhite:1 alpha:0.9]];
     
     [contentView addSubview:shopTipLabel];
@@ -115,7 +115,7 @@
         make.top.equalTo(shopNameLabel.mas_bottom).offset(16 * 0.5);
     }];
     
-    // TODO: 折扣信息
+    
     UILabel *shopDiscountLabel = [UILabel makeLabelWithText:@"折扣信息" andTextFont:16 andTextColor:[UIColor whiteColor]];
     [contentView addSubview:shopDiscountLabel];
     
@@ -124,7 +124,7 @@
         make.top.equalTo(shopTipLabel.mas_bottom).offset(16 * 2.5);
     }];
     
-    // TODO: 折扣信息两边的线
+    
     UIView *shopDiscountLineViewLeft = [[UIView alloc] init];
     shopDiscountLineViewLeft.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:shopDiscountLineViewLeft];
@@ -150,22 +150,22 @@
     
     
     
-    // TODO:优惠信息
+    
     UIStackView *stackView = [[UIStackView alloc] init];
     
-    // 设置轴向
+    
     stackView.axis = UILayoutConstraintAxisVertical;
-    // 设置分布方式 等分填充
+    
     stackView.distribution = UIStackViewDistributionFillEqually;
-    // 间距每一个之间的间距
+    
     stackView.spacing = 10;
     
-    // 根据优惠信息的模型个数for循环创建infoView
+    
     for (LoopViewModel *infoModel in _shopPOIInfoModel.discounts2) {
         
         loopView *infoView = [[loopView alloc] init];
-        infoView.loopViewModel = infoModel; // 传数据
-        // 不要用addSubView方法
+        infoView.loopViewModel = infoModel;
+        
         [stackView addArrangedSubview:infoView];
     }
     
@@ -180,7 +180,6 @@
     
     
     
-    // TODO: 折扣信息
     UILabel *shopBulletinLabel = [UILabel makeLabelWithText:@"公告信息" andTextFont:16 andTextColor:[UIColor whiteColor]];
     [contentView addSubview:shopBulletinLabel];
     
@@ -192,7 +191,6 @@
     
     
     
-    // TODO: 折扣信息两边的线
     UIView *shopBulletinLineViewLeft = [[UIView alloc] init];
     shopBulletinLineViewLeft.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:shopBulletinLineViewLeft];
@@ -217,17 +215,15 @@
     }];
     
     
-    // TODO: 商家公告信息
     UILabel *shopBulletionInfoLabel = [UILabel makeLabelWithText:_shopPOIInfoModel.bulletin andTextFont:12 andTextColor:[UIColor colorWithWhite:1 alpha:0.9]];
     [contentView addSubview:shopBulletionInfoLabel];
-    shopBulletionInfoLabel.numberOfLines = 0; // 自动换行
+    shopBulletionInfoLabel.numberOfLines = 0;
     
     [shopBulletionInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(16);
         make.top.equalTo(shopBulletinLabel.mas_bottom).offset(16);
         make.right.offset(-16);
         
-        // 多给最底部的控件添加一个距离父控件底部的约束 来处高度 "有点自动计算行的意思"
         make.bottom.offset(-16);
     }];
     

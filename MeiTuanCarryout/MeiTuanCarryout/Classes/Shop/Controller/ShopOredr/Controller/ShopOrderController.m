@@ -18,6 +18,12 @@
 
 @property (nonatomic, weak) UITableView *cotegoryTabelView;
 
+@property (nonatomic, weak) UITableView *foodTableView;
+
+
+@property (nonatomic, assign) BOOL cotegoryIsClick;
+
+
 
 @end
 
@@ -86,6 +92,8 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     foodTableView.delegate = self;
     foodTableView.dataSource = self;
+    
+    _foodTableView = foodTableView;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -134,6 +142,35 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     return headerView;
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == _cotegoryTabelView) {
+        
+        _cotegoryIsClick = YES;
+
+        [_foodTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    
+    if (tableView == _foodTableView) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        return;
+    }
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView == _foodTableView) {
+        if(_cotegoryIsClick == YES) return;
+        NSIndexPath *indexPath = _foodTableView.indexPathsForVisibleRows[0];
+        [_cotegoryTabelView selectRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.section inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
+}
+
+
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    
+    _cotegoryIsClick = NO;
+    
+}
 //
 //-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 //    if (tableView ==_cotegoryTabelView) {
