@@ -6,7 +6,7 @@
 //  Copyright © 2017年 JZG-users. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ShopFoodModel : NSObject
 
@@ -23,6 +23,10 @@
 @property (nonatomic, copy) NSString *praise_content;
 
 @property (nonatomic, assign) NSInteger counts;
+
+@property (nonatomic, assign) CGFloat praise_num;
+
+@property (nonatomic, assign) CGFloat tread_num;
 
 
 + (instancetype)shopFoodModelWithDict:(NSDictionary *)dict;

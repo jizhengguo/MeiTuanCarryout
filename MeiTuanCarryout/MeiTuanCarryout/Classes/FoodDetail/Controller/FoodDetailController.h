@@ -7,7 +7,12 @@
 //
 
 #import "JZGBasicController.h"
+@class ShopOrderModel;
 
 @interface FoodDetailController : JZGBasicController
+
+@property (nonatomic, strong) NSArray <ShopOrderModel *>*foodModel;
+
+@property (nonatomic, assign) NSIndexPath *indexPath;
 
 @end

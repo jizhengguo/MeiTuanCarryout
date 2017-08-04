@@ -13,6 +13,7 @@
 #import "ShopOrderCell.h"
 #import "ShopFoodViewCell.h"
 #import "ShopOrderHeaderView.h"
+#import "FoodDetailController.h"
 
 @interface ShopOrderController ()<UITableViewDataSource , UITableViewDelegate>
 
@@ -153,6 +154,13 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     if (tableView == _foodTableView) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        FoodDetailController *foodDetailVC = [[FoodDetailController alloc] init];
+        foodDetailVC.foodModel =_shopOrderModel;
+        
+        foodDetailVC.indexPath = indexPath;
+        
+        [self.navigationController pushViewController:foodDetailVC animated:YES];
         return;
     }
 }
