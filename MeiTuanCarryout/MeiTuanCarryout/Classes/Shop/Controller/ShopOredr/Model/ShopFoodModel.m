@@ -17,7 +17,7 @@
     
     return obj;
 }
-
+//属性名和关键字重名.在setvalue中拦截并赋值
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if ([key isEqualToString:@"description"]) {
         _description1 = value;

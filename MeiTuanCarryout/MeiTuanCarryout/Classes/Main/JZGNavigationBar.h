@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface JZGNavigationBar : UINavigationBar
-
+//背景图片
 @property (nonatomic, weak) UIImageView *imageView;
 
 

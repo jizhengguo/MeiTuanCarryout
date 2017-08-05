@@ -13,13 +13,21 @@
 #import "Masonry.h"
 
 @interface ShopFoodViewCell ()
+//头像
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
+//店名
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+//详情
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+//月售
 @property (weak, nonatomic) IBOutlet UILabel *month_saled_contentLabel;
+//售价
 @property (weak, nonatomic) IBOutlet UILabel *min_priceLabel;
+//赞数
 @property (weak, nonatomic) IBOutlet UILabel *praise_contentLabel;
+//约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCount;
+//容器视图
 @property (nonatomic, weak) ShopCountView *countView;
 
 
@@ -27,7 +35,7 @@
 
 @implementation ShopFoodViewCell
 
-
+//接受模型并复制
 -(void)setModel:(ShopFoodModel *)model{
     _model = model;
     
@@ -42,6 +50,7 @@
     _min_priceLabel.text = @(model.min_price).description;
     
     _praise_contentLabel.text = model.praise_content;
+    //判断详情是否有值,如果没有内容就改变约束
     _layoutCount.constant = ([model.description1 stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0) ? 8 : 0;
     
     _countView.model = model;
@@ -54,7 +63,7 @@
 }
 
 -(void)setupUI{
-    
+    //添加计数器视图
     ShopCountView *countView = [ShopCountView shopCountView];
     
     [self.contentView addSubview:countView];

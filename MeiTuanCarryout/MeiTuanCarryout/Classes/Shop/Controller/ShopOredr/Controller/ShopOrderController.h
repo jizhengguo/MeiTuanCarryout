@@ -13,6 +13,7 @@
 
 @interface ShopOrderController : UIViewController
 
+//创建模型属性接收数据
 @property (nonatomic, strong) NSArray<ShopOrderModel *> *shopOrderModel;
 
 

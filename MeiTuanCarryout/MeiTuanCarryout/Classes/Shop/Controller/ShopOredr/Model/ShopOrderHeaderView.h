@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+//组头的默认样式继承自UITableViewHeaderFooterView
 @interface ShopOrderHeaderView : UITableViewHeaderFooterView
-
+//接受组头数据
 @property (nonatomic, strong) NSString *headerText;
 
 @end

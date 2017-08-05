@@ -16,7 +16,7 @@
     
     [self setupUI];
 }
-
+//重写init方法,uitableViewcell需要重写initWithStyle
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -26,11 +26,12 @@
 }
 
 - (void)setupUI {
+    //修改label字体,并修改最大行数
     self.textLabel.font = [UIFont systemFontOfSize:12];
     self.textLabel.numberOfLines = 2;
-    
+    //设置背景颜色
     self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
-    
+    //设置虚线
     DushView *dushView = [[DushView alloc]init];
     dushView.backgroundColor = [UIColor blackColor];
 //    [self.contentView addSubview:dushView];
@@ -40,11 +41,11 @@
         make.bottom.left.right.offset(0);
         make.height.offset(1);
     }];
-    
+    //设置选中视图
     UIView *selectedView = [[UIView alloc] init];
     selectedView.backgroundColor = [UIColor whiteColor];
 
-    
+    //设置指引小黄条
     UIView *yellowLineView = [[UIView alloc] init];
     yellowLineView.backgroundColor = [UIColor yellowColor];
     [selectedView addSubview:yellowLineView];
@@ -58,10 +59,6 @@
 
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
 
 @end

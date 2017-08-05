@@ -191,8 +191,9 @@
         make.left.right.bottom.offset(0);
         
     }];
-    
+    //创建滚动视图中的三个自控制器
     ShopOrderController *vc1 = [[ShopOrderController alloc]init];
+    //传递数据
     vc1.shopOrderModel = _shopOrderModel;
     ShopCommentController *vc2 = [[ShopCommentController alloc]init];
     ShopInfoController *vc3 = [[ShopInfoController alloc]init];
@@ -237,13 +238,13 @@
     CGFloat height = _headerView.bounds.size.height;
     
     [_headerView mas_updateConstraints:^(MASConstraintMaker *make) {
-       
+       //判断高度
         if(p.y +height >= KHeaderViewHeightMax){
-            
+            //设置约束
             make.height.offset(KHeaderViewHeightMax);
             
         }else if (p.y +height <= KHeaderViewHeightMin){
-            
+            //设置约束
             make.height.offset(KHeaderViewHeightMin);
             
         }else{
@@ -280,10 +281,11 @@
 }
 #pragma mark - 设置滚动视图的联动(ScrollView代理)
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //计算平移X值
     CGFloat transfromX = scrollView.contentOffset.x / scrollView.contentSize.width * _shopTagView.bounds.size.width;
-    
+    //让小黄条按比例平移
     _yellowView.transform = CGAffineTransformMakeTranslation(transfromX, 0);
-    
+    //判断小黄条位置,使其所在button字体加粗
     for (NSInteger i = 0; i < _shopTagView.subviews.count-1; i++) {
         if (_shopTagView.subviews[i].tag == scrollView.contentOffset.x/scrollView.bounds.size.width) {
             ((UIButton *)_shopTagView.subviews[i]).titleLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -311,7 +313,7 @@
     NSArray *shopOrderArr = arr[@"data"][@"food_spu_tags"];
     
     NSMutableArray *shopOrderArrM = [NSMutableArray arrayWithCapacity:shopOrderArr.count];
-    
+    //遍历数组,字典转模型
     for (NSDictionary *dict in shopOrderArr) {
         ShopOrderModel *model = [ShopOrderModel shopOrderModelWithDict:dict];
         [shopOrderArrM addObject:model];

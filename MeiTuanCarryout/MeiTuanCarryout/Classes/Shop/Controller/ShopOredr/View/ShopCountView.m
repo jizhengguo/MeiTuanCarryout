@@ -9,15 +9,18 @@
 #import "ShopCountView.h"
 
 @interface ShopCountView ()
+//减号按钮
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
+//加号按钮
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+//计数label
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 
 @end
 
 @implementation ShopCountView
-
+//从Xib创建
 +(instancetype)shopCountView{
     return [[[UINib nibWithNibName:@"ShopCountView" bundle:nil] instantiateWithOwner:nil options:nil] firstObject];
 }
@@ -42,7 +45,7 @@
 }
 
 
-
+//当model中没值时将减号及label隐藏
 -(void)updataState{
     if (_model.counts > 0) {
         
@@ -56,7 +59,7 @@
      _countLabel.text = @(_model.counts).description;
     
 }
-
+//点击减号时给计数复制
 - (IBAction)subtractButtonClick {
     
     _model.counts--;
@@ -64,13 +67,14 @@
     [self updataState];
     
 }
+//点击加号时给计数复制
 - (IBAction)addButtonClick {
     
     _model.counts++;
     
     [self updataState];
 }
-
+//刷新数据
 -(void)setModel:(ShopFoodModel *)model{
     _model = model;
     

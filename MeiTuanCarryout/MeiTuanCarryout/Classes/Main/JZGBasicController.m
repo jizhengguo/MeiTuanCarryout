@@ -57,7 +57,7 @@
 
     
 }
-
+//内存管理
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     if (self.isViewLoaded &&self.view.window == nil) {

@@ -18,7 +18,7 @@
     
     return obj;
 }
-
+//在kvc中进行字典转模型
 -(void)setValue:(id)value forKey:(NSString *)key{
     [super setValue:value forKey:key];
     
@@ -34,7 +34,7 @@
         _spus = arrM;
     }
 }
-
+//防止报错
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
     
 }

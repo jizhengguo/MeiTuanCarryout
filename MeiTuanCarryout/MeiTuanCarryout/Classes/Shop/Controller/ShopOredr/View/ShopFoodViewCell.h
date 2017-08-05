@@ -11,7 +11,7 @@
 @class ShopFoodModel;
 
 @interface ShopFoodViewCell : UITableViewCell
-
+//创建属性接受模型
 @property (nonatomic, strong) ShopFoodModel *model;
 
 @end

@@ -42,59 +42,54 @@
     
     [self setupUI];
 }
-
+//创建UI界面
 -(void)setupUI{
+    //创建背景图片View
     UIImageView *bgImageView = [[UIImageView alloc] init];
+    //添加图片
     [bgImageView sd_setImageWithURL:[NSURL URLWithString:[_shopPOIInfoModel.poi_back_pic_url stringByDeletingPathExtension]]];
+    //添加到父控件
     [self.view addSubview:bgImageView];
-    
+    //
     [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
     }];
     
-    
-    
-    //
+    //添加关闭按钮
     UIButton *closeBtn = [[UIButton alloc] init];
+    //设置默认状态图片
     [closeBtn setImage:[UIImage imageNamed:@"btn_close_normal"] forState:UIControlStateNormal];
+    //设置高亮图片
     [closeBtn setImage:[UIImage imageNamed:@"btn_close_selected"] forState:UIControlStateHighlighted];
     [self.view addSubview:closeBtn];
-    
+    //约束
     [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.offset(0);
         make.bottom.offset(-60);
     }];
-    
+    //添加监听方法
     [closeBtn addTarget:self action:@selector(closeBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    
-    
+    //创滚动视图
     HMScrollView *scrollView = [[HMScrollView alloc] init];
-    
     [self.view addSubview:scrollView];
-    
+    //隐藏滚动条
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
-    
+    //约束
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.offset(0);
         make.bottom.equalTo(closeBtn.mas_top).offset(-60);
     }];
-    
-    
- 
+    //内容view
     UIView *contentView = [[UIView alloc] init];
     [scrollView addSubview:contentView];
-    
     [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
         make.width.equalTo(scrollView);
         
     }];
-    
-    
-    
+    //店铺名称
     UILabel *shopNameLabel = [UILabel makeLabelWithText:_shopPOIInfoModel.name andTextFont:14 andTextColor:[UIColor whiteColor]];
     
     [contentView addSubview:shopNameLabel];
@@ -103,9 +98,7 @@
         make.centerX.offset(0);
         make.top.offset(64);
     }];
-    
-    
-    
+    //信息标签
     UILabel *shopTipLabel = [UILabel makeLabelWithText:[NSString stringWithFormat:@"%@ | %@ | %@", _shopPOIInfoModel.min_price_tip, _shopPOIInfoModel.shipping_fee_tip, _shopPOIInfoModel.delivery_time_tip] andTextFont:12 andTextColor:[UIColor colorWithWhite:1 alpha:0.9]];
     
     [contentView addSubview:shopTipLabel];
@@ -114,8 +107,7 @@
         make.centerX.offset(0);
         make.top.equalTo(shopNameLabel.mas_bottom).offset(16 * 0.5);
     }];
-    
-    
+    //折扣信息
     UILabel *shopDiscountLabel = [UILabel makeLabelWithText:@"折扣信息" andTextFont:16 andTextColor:[UIColor whiteColor]];
     [contentView addSubview:shopDiscountLabel];
     
@@ -123,8 +115,7 @@
         make.centerX.offset(0);
         make.top.equalTo(shopTipLabel.mas_bottom).offset(16 * 2.5);
     }];
-    
-    
+    //左边线
     UIView *shopDiscountLineViewLeft = [[UIView alloc] init];
     shopDiscountLineViewLeft.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:shopDiscountLineViewLeft];
@@ -135,8 +126,7 @@
         make.right.equalTo(shopDiscountLabel.mas_left).offset(-16);
         make.centerY.equalTo(shopDiscountLabel).offset(0);
     }];
-    
-    
+    //右边线
     UIView *shopDiscountLineViewRight = [[UIView alloc] init];
     shopDiscountLineViewRight.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:shopDiscountLineViewRight];
@@ -147,20 +137,16 @@
         make.left.equalTo(shopDiscountLabel.mas_right).offset(16);
         make.centerY.equalTo(shopDiscountLabel).offset(0);
     }];
-    
-    
-    
-    
+    //逆向布局,重叠视图
     UIStackView *stackView = [[UIStackView alloc] init];
-    
-    
+    //设置重叠方向
     stackView.axis = UILayoutConstraintAxisVertical;
-    
+    //设置重叠样式
     stackView.distribution = UIStackViewDistributionFillEqually;
-    
+    //设置间距
     stackView.spacing = 10;
     
-    
+    //循环遍历逐一将滚动视图添加到stackView中
     for (LoopViewModel *infoModel in _shopPOIInfoModel.discounts2) {
         
         loopView *infoView = [[loopView alloc] init];
@@ -168,18 +154,16 @@
         
         [stackView addArrangedSubview:infoView];
     }
-    
+    //将父视图添加到contentView中
     [contentView addSubview:stackView];
-    
+    //给其添加约束
     [stackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(16);
         make.right.offset(-16);
         make.top.equalTo(shopDiscountLabel.mas_bottom).offset(16);
         make.height.offset(_shopPOIInfoModel.discounts2.count * 30);
     }];
-    
-    
-    
+    //商家广告Label
     UILabel *shopBulletinLabel = [UILabel makeLabelWithText:@"公告信息" andTextFont:16 andTextColor:[UIColor whiteColor]];
     [contentView addSubview:shopBulletinLabel];
     
@@ -188,9 +172,7 @@
         make.top.equalTo(stackView.mas_bottom).offset(16 * 2.5);
     }];
     
-    
-    
-    
+    //左侧白线
     UIView *shopBulletinLineViewLeft = [[UIView alloc] init];
     shopBulletinLineViewLeft.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:shopBulletinLineViewLeft];
@@ -202,7 +184,7 @@
         make.centerY.equalTo(shopBulletinLabel).offset(0);
     }];
     
-    
+    //右侧白线
     UIView *shopBulletinLineViewRight = [[UIView alloc] init];
     shopBulletinLineViewRight.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:shopBulletinLineViewRight];
@@ -214,7 +196,7 @@
         make.centerY.equalTo(shopBulletinLabel).offset(0);
     }];
     
-    
+    //广告详情
     UILabel *shopBulletionInfoLabel = [UILabel makeLabelWithText:_shopPOIInfoModel.bulletin andTextFont:12 andTextColor:[UIColor colorWithWhite:1 alpha:0.9]];
     [contentView addSubview:shopBulletionInfoLabel];
     shopBulletionInfoLabel.numberOfLines = 0;
@@ -229,19 +211,19 @@
     
 
 }
-
+//点击退出按钮执行dismiss命令退出modal
 - (void)closeBtnClick {
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
+//修改顶部状态栏颜色
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 
-
+//给控制器添加touchEnd时执行dissmiss  关闭按钮旁边范围点击退出modal
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     [self dismissViewControllerAnimated:YES completion:nil];

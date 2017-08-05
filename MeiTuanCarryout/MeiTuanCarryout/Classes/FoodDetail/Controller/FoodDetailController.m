@@ -11,9 +11,10 @@
 #import "Masonry.h"
 #import "ShopOrderModel.h"
 #import "FoodDetailCell.h"
+#import "JZGNavigationBar.h"
 
 @interface FoodDetailController ()<UICollectionViewDelegate , UICollectionViewDataSource>
-
+//食物详情视图
 @property (nonatomic, weak) UICollectionView *foodDetailView;
 
 
@@ -24,14 +25,19 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
 @implementation FoodDetailController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
     [self setupUI];
+    [super viewDidLoad];
+    //设置隐藏navbar
+    self.navBar.imageView.alpha = 0;
+    self.navBar.tintColor = [UIColor whiteColor];
+    self.statusBarStyle = UIStatusBarStyleLightContent;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    
 }
 
 -(void)setupUI{
-    
+    //创建食物详情
     FoodDetailFlowLayout *flowLayout = [[FoodDetailFlowLayout alloc]init];
     
     UICollectionView *foodDetailView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
@@ -41,17 +47,17 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
     [foodDetailView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
     }];
-    
+    //设置代理
     foodDetailView.delegate = self;
     foodDetailView.dataSource = self;
     
     [foodDetailView registerNib:[UINib nibWithNibName:@"FoodDetailCell" bundle:nil] forCellWithReuseIdentifier:foodDetailCellID];
-    
+    //关闭弹簧
     foodDetailView.bounces = NO;
-    
+    //隐藏滚动条
     foodDetailView.showsVerticalScrollIndicator = NO;
     foodDetailView.showsHorizontalScrollIndicator = NO;
-    
+    //设置分页
     foodDetailView.pagingEnabled = YES;
 
     
@@ -62,9 +68,9 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
 }
 
 -(void)viewDidLayoutSubviews{
-    
+    //打开时滚动
     if (_indexPath != nil) {
-        [_foodDetailView scrollToItemAtIndexPath:_indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+        [_foodDetailView scrollToItemAtIndexPath:_indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
         
         _indexPath =nil;
     }
@@ -72,7 +78,7 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
 }
 
 
-
+#pragma mark - 数据源方法
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return _foodModel.count;
 }

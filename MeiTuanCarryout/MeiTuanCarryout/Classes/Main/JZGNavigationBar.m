@@ -31,7 +31,7 @@
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
     }];
-    
+    //赋值
     _imageView = imageView;
     
 }
