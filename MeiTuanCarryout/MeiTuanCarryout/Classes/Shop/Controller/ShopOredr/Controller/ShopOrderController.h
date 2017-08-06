@@ -16,6 +16,8 @@
 
 //创建模型属性接收数据
 @property (nonatomic, strong) NSArray<ShopOrderModel *> *shopOrderModel;
+//tableView数组
+@property (nonatomic, strong) NSArray<UITableView *> *tableViews;
 
 
 

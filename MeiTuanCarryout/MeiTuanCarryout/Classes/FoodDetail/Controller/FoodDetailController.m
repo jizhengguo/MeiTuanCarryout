@@ -15,6 +15,7 @@
 #import "ShopCarView.h"
 
 
+
 @interface FoodDetailController ()<UICollectionViewDelegate , UICollectionViewDataSource>
 //食物详情视图
 @property (nonatomic, weak) UICollectionView *foodDetailView;
@@ -82,7 +83,7 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
     }];
     
     
-    
+    carView.shopCarModel = _shopCarModel;
 }
 
 

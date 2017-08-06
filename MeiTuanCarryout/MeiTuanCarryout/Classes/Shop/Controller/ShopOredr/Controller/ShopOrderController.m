@@ -60,6 +60,8 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     [self.view bringSubviewToFront:_shopCarView];
     
+    _tableViews = @[_foodTableView,_cotegoryTabelView];
+    
 }
 
 #pragma mark - 设置购物车
@@ -142,6 +144,11 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     switch (shopCountView.buttonType) {
         case ShopCountViewButtonTypeAdd:
             [self.shopCarModel.shopFoodModel addObject:shopCountView.model];
+            
+            CGPoint startPoint = [shopCountView convertPoint:shopCountView.addButton.center toView:_shopCarView];
+            
+            [self.shopCarView animationWithStarPoint:startPoint];
+            
             break;
             
         case ShopCountViewButtonTypeSub:
@@ -218,6 +225,7 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
         _cotegoryIsClick = YES;
         //将食物视图滚动到指定组的第0行
         [_foodTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
         return;
     }
     //如果选中的是食物视图
@@ -232,6 +240,10 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
         foodDetailVC.indexPath = indexPath;
         //push出行的页面
         [self.navigationController pushViewController:foodDetailVC animated:YES];
+        
+        foodDetailVC.shopCarModel = self.shopCarModel.shopFoodModel;
+
+        
     }
 }
 

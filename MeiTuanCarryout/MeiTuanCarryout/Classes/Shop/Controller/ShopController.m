@@ -22,7 +22,7 @@
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
 
-@interface ShopController ()<UIScrollViewDelegate>
+@interface ShopController ()<UIScrollViewDelegate , UIGestureRecognizerDelegate>
 //创建头部视图
 @property (nonatomic, weak) ShopHeaderView *headerView;
 //创建标签视图
@@ -35,6 +35,8 @@
 @property (nonatomic, strong) shopHeaderViewModel *shopHeaderViewModel;
 //点餐视图数据
 @property (nonatomic, strong) NSArray<ShopOrderModel *> *shopOrderModel;
+//table数组
+@property (nonatomic, weak) ShopOrderController *orderVC;
 
 
 
@@ -55,8 +57,9 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesture:)];
     //添加手势
     [self.view addGestureRecognizer:pan];
-   
-
+    
+    pan.delegate = self;
+    
 }
 
 -(void)setupUI{
@@ -70,7 +73,7 @@
     //设置右侧图标
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_share"] style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navBar.tintColor = [UIColor colorWithWhite:0.4 alpha:1];
-   
+    
     
     //创建头部视图
     [self settingHeaderView];
@@ -78,7 +81,7 @@
     [self settingShopTagView];
     //创建滚动视图
     [self settingShopScrollView];
-
+    
     
 }
 
@@ -98,7 +101,7 @@
     
     hesderView.model = _shopHeaderViewModel;
     _headerView = hesderView;
-
+    
 }
 #pragma mark - 设置标签视图
 -(void)settingShopTagView{
@@ -202,6 +205,8 @@
     //传递数据
     vc1.shopOrderModel = _shopOrderModel;
     
+    _orderVC = vc1;
+    
     ShopCommentController *vc2 = [[ShopCommentController alloc]init];
     ShopInfoController *vc3 = [[ShopInfoController alloc]init];
     
@@ -239,26 +244,63 @@
 }
 #pragma mark - 设置手势
 -(void)panGesture:(UIPanGestureRecognizer *)pan{
+    
+    if (_shopScrollView.isDragging == YES) {
+        return;
+    }
+    
+    for (UITableView *tableView in _orderVC.tableViews) {
+        if (tableView.contentOffset.y <0) {
+            return;
+        }
+    }
     //先拿到相对位置
     CGPoint p = [pan translationInView:pan.view];
     //头部视图当前的高度
     CGFloat height = _headerView.bounds.size.height;
     
-    [_headerView mas_updateConstraints:^(MASConstraintMaker *make) {
-       //判断高度
-        if(p.y +height >= KHeaderViewHeightMax){
-            //设置约束
-            make.height.offset(KHeaderViewHeightMax);
+    switch (pan.state) {
+        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateChanged:
             
-        }else if (p.y +height <= KHeaderViewHeightMin){
-            //设置约束
-            make.height.offset(KHeaderViewHeightMin);
+            [_headerView mas_updateConstraints:^(MASConstraintMaker *make) {
+                //判断高度
+                if(p.y +height >= KHeaderViewHeightMax){
+                    //设置约束
+                    make.height.offset(KHeaderViewHeightMax);
+                    
+                }else if (p.y +height <= KHeaderViewHeightMin){
+                    //设置约束
+                    make.height.offset(KHeaderViewHeightMin);
+                    
+                }else{
+                    
+                    make.height.offset(p.y +height);
+                }
+            }];
             
-        }else{
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:{
+            CGFloat shopHeaderViewMiddelHeight = (KHeaderViewHeightMax - KHeaderViewHeightMin) * 0.5 +KHeaderViewHeightMin;
             
-            make.height.offset(p.y +height);
+            [_headerView mas_updateConstraints:^(MASConstraintMaker *make) {
+                if (self.headerView.bounds.size.height>shopHeaderViewMiddelHeight) {
+                    make.height.offset(KHeaderViewHeightMax);
+                }else{
+                    make.height.offset(KHeaderViewHeightMin);
+                }
+            }];
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.view setNeedsLayout];
+            }];
         }
-    }];
+            break;
+        default:
+            break;
+    }
     
     CGFloat alpha = [@(height) lineFormulaResultAndVlaue1:JZGValueMake(1, 64) AndVlaue2:JZGValueMake(0, 180)];
     
@@ -331,7 +373,10 @@
     
 }
 
-
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    
+    return YES;
+}
 
 
 
@@ -341,13 +386,13 @@
 //}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

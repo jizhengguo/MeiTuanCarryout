@@ -11,8 +11,7 @@
 @interface ShopCountView ()
 //减号按钮
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
-//加号按钮
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
+;
 //计数label
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 

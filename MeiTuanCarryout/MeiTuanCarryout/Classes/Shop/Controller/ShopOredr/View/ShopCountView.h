@@ -32,6 +32,9 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, weak) id<ShopCountViewDelegate> delegate;
 
+//加号按钮
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 +(instancetype)shopCountView;
 
 @end

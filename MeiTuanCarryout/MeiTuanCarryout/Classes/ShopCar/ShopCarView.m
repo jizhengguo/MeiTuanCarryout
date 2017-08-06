@@ -10,13 +10,15 @@
 #import "Masonry.h"
 #import "UILabel+Addition.h"
 
-@interface ShopCarView ()
+@interface ShopCarView ()<CAAnimationDelegate>
 
 @property (nonatomic, weak) UIButton *shopCarButton;
 
 @property (nonatomic, weak) UIButton *pleaseAddButton;
 
 @property (nonatomic, weak) UILabel *priceLabel;
+
+@property (nonatomic, weak) UILabel *foodCountLabel;
 
 
 
@@ -115,6 +117,35 @@
     
     _priceLabel = priceLabel;
     
+    //食物数量label
+    UILabel *foodCountLabel = [UILabel makeLabelWithText:@"" andTextFont:12 andTextColor:[UIColor whiteColor]];
+    
+    foodCountLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"icon_food_count_bg"]];
+    
+    
+    [self addSubview:foodCountLabel];
+    
+    [foodCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(shopCarButton);
+        make.height.width.offset(16);
+    }];
+    
+    // 设置label中的内容居中
+    foodCountLabel.textAlignment = NSTextAlignmentCenter;
+    // 让字体自适应
+    foodCountLabel.adjustsFontSizeToFitWidth = YES;
+    
+    // 让基线居中
+    foodCountLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+    
+    // 让它默认隐藏
+    foodCountLabel.hidden = YES;
+    
+    _foodCountLabel = foodCountLabel;
+
+    
+    
+    
 }
 
 -(void)setShopCarModel:(NSArray<ShopFoodModel *> *)shopCarModel{
@@ -128,6 +159,8 @@
         
         _pleaseAddButton.backgroundColor = [UIColor orangeColor];
         
+        _foodCountLabel.hidden = NO;
+        
         
     }else{
         _shopCarButton.enabled = NO;
@@ -135,11 +168,64 @@
         _pleaseAddButton.enabled = NO;
         
         _pleaseAddButton.backgroundColor = [UIColor lightGrayColor];
+        
+        _foodCountLabel.hidden = YES;
     }
     
    NSNumber *sumPrice =  [shopCarModel valueForKeyPath:@"@sum.min_price"];
     _priceLabel.text = [NSString stringWithFormat:@"¥ %@",sumPrice];
     
+    _foodCountLabel.text = @(shopCarModel.count).description;
+    
+}
+
+-(void)animationWithStarPoint:(CGPoint)starPoint{
+    UIImageView *redPoint = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_common_point"]];
+    [self addSubview:redPoint];
+    
+    CAKeyframeAnimation *anim = [[CAKeyframeAnimation alloc]init];
+    
+    UIBezierPath *path = [[UIBezierPath alloc]init];
+    
+    CGPoint endPoint = _shopCarButton.center;
+    
+    [path moveToPoint:starPoint];
+    
+    [path addQuadCurveToPoint:endPoint controlPoint:CGPointMake(starPoint.x - 150, starPoint.y - 100)];
+    
+    anim.keyPath = @"position";
+    
+    anim.path = path.CGPath;
+    
+    anim.duration = 0.25;
+    
+    anim.repeatCount = 1;
+    
+    anim.fillMode = kCAFillModeForwards;
+    anim.removedOnCompletion = NO;
+    
+    anim.delegate = self;
+    
+    [anim setValue:redPoint forKey:@"redPoint"];
+    
+    [redPoint.layer addAnimation:anim forKey:nil];
+    
+    
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [[anim valueForKey:@"redPoint"] removeFromSuperview];
+        
+        _shopCarButton.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _shopCarButton.transform = CGAffineTransformIdentity;
+        }];
+    }];
 }
 
 
