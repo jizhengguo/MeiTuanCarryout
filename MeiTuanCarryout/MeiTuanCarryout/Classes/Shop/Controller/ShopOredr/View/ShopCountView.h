@@ -12,6 +12,8 @@
 
 @protocol ShopCountViewDelegate <NSObject>
 
+@optional
+
 -(void)shopCountViewDelegateClickButton:(ShopCountView *)shopCountView;
 
 @end
@@ -26,7 +28,7 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) ShopFoodModel *model;
 
-@property (nonatomic, assign) ShopCountViewButtonType *buttonType;
+@property (nonatomic, assign) ShopCountViewButtonType buttonType;
 
 @property (nonatomic, weak) id<ShopCountViewDelegate> delegate;
 

@@ -12,6 +12,7 @@
 #import "ShopOrderModel.h"
 #import "FoodDetailCell.h"
 #import "JZGNavigationBar.h"
+#import "ShopCarView.h"
 
 
 @interface FoodDetailController ()<UICollectionViewDelegate , UICollectionViewDataSource>
@@ -64,7 +65,26 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
     
     _foodDetailView = foodDetailView;
     
+    [self settingShopCarView];
+    
 }
+
+-(void)settingShopCarView{
+    
+    
+    ShopCarView *carView = [[ShopCarView alloc] init];
+    
+    [self.view addSubview:carView];
+    
+    [carView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.offset(0);
+        make.height.offset(50);
+    }];
+    
+    
+    
+}
+
 
 -(void)viewDidLayoutSubviews{
     //打开时滚动

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class ShopFoodModel;
 
 @interface ShopCarModel : NSObject
+//保存模型
+@property (nonatomic, strong) NSMutableArray<ShopFoodModel *> *shopFoodModel;
 
 @end

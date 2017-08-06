@@ -10,4 +10,11 @@
 
 @implementation ShopCarModel
 
+-(NSMutableArray<ShopFoodModel *> *)shopFoodModel{
+    if (_shopFoodModel == nil) {
+        _shopFoodModel = [NSMutableArray array];
+        
+    }
+    return _shopFoodModel;
+}
 @end

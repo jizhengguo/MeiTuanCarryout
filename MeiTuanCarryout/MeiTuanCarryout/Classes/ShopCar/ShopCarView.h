@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ShopCarModel;
+@class ShopFoodModel;
 
 @interface ShopCarView : UIView
 
 //创建模型属性
-@property (nonatomic, strong) NSArray<ShopCarModel *> *shopCarModel;
+@property (nonatomic, strong) NSArray<ShopFoodModel *> *shopCarModel;
 
 @end

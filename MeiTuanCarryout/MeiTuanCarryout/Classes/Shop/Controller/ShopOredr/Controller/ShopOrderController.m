@@ -15,9 +15,11 @@
 #import "ShopOrderHeaderView.h"
 #import "FoodDetailController.h"
 #import "ShopCarView.h"
+#import "ShopCountView.h"
+#import "ShopCarModel.h"
 
 
-@interface ShopOrderController ()<UITableViewDataSource , UITableViewDelegate>
+@interface ShopOrderController ()<UITableViewDataSource , UITableViewDelegate ,ShopCountViewDelegate>
 //标题视图
 @property (nonatomic, weak) UITableView *cotegoryTabelView;
 //食物视图
@@ -29,7 +31,8 @@
 //购物车视图
 @property (nonatomic, weak) ShopCarView *shopCarView;
 
-
+//创建购物车model
+@property (nonatomic, strong) ShopCarModel *shopCarModel;
 
 
 @end
@@ -72,6 +75,7 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
         make.height.offset(50);
     }];
     
+       
     _shopCarView = carView;
     
 }
@@ -133,6 +137,27 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     _foodTableView = foodTableView;
 }
 
+-(void)shopCountViewDelegateClickButton:(ShopCountView *)shopCountView{
+    
+    switch (shopCountView.buttonType) {
+        case ShopCountViewButtonTypeAdd:
+            [self.shopCarModel.shopFoodModel addObject:shopCountView.model];
+            break;
+            
+        case ShopCountViewButtonTypeSub:
+            [self.shopCarModel.shopFoodModel removeObjectAtIndex:[self.shopCarModel.shopFoodModel indexOfObject:shopCountView.model]];
+            break;
+            
+        default:
+            break;
+    }
+    
+    _shopCarView.shopCarModel = self.shopCarModel.shopFoodModel;
+
+    
+    
+}
+
 //返回组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     //判断所在的tableview是哪个视图中的
@@ -168,6 +193,7 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     cell.model = _shopOrderModel[indexPath.section].spus[indexPath.row];
     
+    cell.countView.delegate = self;
     
 //    ShopFoodModel *foodModel=_shopOrderModel[indexPath.section].spus[indexPath.row];
 //    cell.textLabel.text = foodModel.name;
@@ -226,6 +252,15 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     _cotegoryIsClick = NO;
     
+}
+
+//懒加载购物车模型
+-(ShopCarModel *)shopCarModel{
+    if (_shopCarModel == nil) {
+        _shopCarModel = [[ShopCarModel alloc] init];
+        
+    }
+    return _shopCarModel;
 }
 //
 //-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

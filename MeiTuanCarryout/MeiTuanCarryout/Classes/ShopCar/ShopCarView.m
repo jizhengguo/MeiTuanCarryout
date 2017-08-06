@@ -10,6 +10,18 @@
 #import "Masonry.h"
 #import "UILabel+Addition.h"
 
+@interface ShopCarView ()
+
+@property (nonatomic, weak) UIButton *shopCarButton;
+
+@property (nonatomic, weak) UIButton *pleaseAddButton;
+
+@property (nonatomic, weak) UILabel *priceLabel;
+
+
+
+@end
+
 @implementation ShopCarView
 
 -(void)awakeFromNib {
@@ -28,8 +40,19 @@
 }
 
 - (void)setupUI {
+    
+    
+    //创建背景图片
+    
+    UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg_shop_car"]];
+    
+    [self addSubview:image];
+    
+    [image mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+    
     //创建小黄车
-    self.backgroundColor = [UIColor whiteColor];
     
     UIButton *shopCarButton = [[UIButton alloc] init];
     
@@ -49,17 +72,23 @@
         
     }];
     
+    shopCarButton.enabled = NO;
+    
+    _shopCarButton = shopCarButton;
+    
     //创建请添加按钮
     
     UIButton *pleaseAddButton = [[UIButton alloc] init];
     
-    [pleaseAddButton setTitle:@"请添加" forState:UIControlStateNormal];
+    [pleaseAddButton setTitle:@"结  账" forState:UIControlStateNormal]
+    ;
+    [pleaseAddButton setTitle:@"请添加" forState:UIControlStateDisabled];
     
-    [pleaseAddButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [pleaseAddButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
     
     [pleaseAddButton setBackgroundColor:[UIColor lightGrayColor]];
     
-    pleaseAddButton.userInteractionEnabled = NO;
+    pleaseAddButton.enabled = NO;
     
     pleaseAddButton.titleLabel.font = [UIFont systemFontOfSize:20];
     
@@ -69,6 +98,8 @@
         make.top.bottom.right.offset(0);
         make.width.offset(100);
     }];
+    
+    _pleaseAddButton = pleaseAddButton;
     
     //创建价钱label
     
@@ -82,6 +113,32 @@
         make.centerY.offset(0);
     }];
     
+    _priceLabel = priceLabel;
+    
+}
+
+-(void)setShopCarModel:(NSArray<ShopFoodModel *> *)shopCarModel{
+    
+    _shopCarModel = shopCarModel;
+    
+    if (shopCarModel.count != 0) {
+        _shopCarButton.enabled = YES;
+        
+        _pleaseAddButton.enabled = YES;
+        
+        _pleaseAddButton.backgroundColor = [UIColor orangeColor];
+        
+        
+    }else{
+        _shopCarButton.enabled = NO;
+        
+        _pleaseAddButton.enabled = NO;
+        
+        _pleaseAddButton.backgroundColor = [UIColor lightGrayColor];
+    }
+    
+   NSNumber *sumPrice =  [shopCarModel valueForKeyPath:@"@sum.min_price"];
+    _priceLabel.text = [NSString stringWithFormat:@"¥ %@",sumPrice];
     
 }
 

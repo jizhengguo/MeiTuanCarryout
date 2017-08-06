@@ -66,6 +66,12 @@
     
     [self updataState];
     
+    _buttonType = ShopCountViewButtonTypeSub;
+    
+    if ([self.delegate respondsToSelector:@selector(shopCountViewDelegateClickButton:)]) {
+        [self.delegate shopCountViewDelegateClickButton:self];
+    }
+    
 }
 //点击加号时给计数复制
 - (IBAction)addButtonClick {
@@ -73,6 +79,12 @@
     _model.counts++;
     
     [self updataState];
+    
+    _buttonType = ShopCountViewButtonTypeAdd;
+    
+    if ([self.delegate respondsToSelector:@selector(shopCountViewDelegateClickButton:)]) {
+        [self.delegate shopCountViewDelegateClickButton:self];
+    }
 }
 //刷新数据
 -(void)setModel:(ShopFoodModel *)model{

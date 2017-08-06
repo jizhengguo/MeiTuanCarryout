@@ -27,8 +27,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *praise_contentLabel;
 //约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCount;
-//计数器视图
-@property (nonatomic, weak) ShopCountView *countView;
+
+
+
 
 
 @end
