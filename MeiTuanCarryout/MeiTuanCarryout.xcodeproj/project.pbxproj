@@ -52,6 +52,8 @@
 		4304ED731F2E02F100F009EB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED4C1F2E02F100F009EB /* UIView+WebCacheOperation.m */; };
 		4304ED761F2E0D5F00F009EB /* NSObject+LineFormula.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */; };
 		4304ED791F2E15AB00F009EB /* JZGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */; };
+		4307BCF61F36DEE80072F203 /* ShopCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4307BCF51F36DEE80072F203 /* ShopCarView.m */; };
+		4307BCF91F36EB1D0072F203 /* ShopCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4307BCF81F36EB1D0072F203 /* ShopCarModel.m */; };
 		43BC27111F2F582A000C3ECD /* ShopCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27061F2F582A000C3ECD /* ShopCommentController.m */; };
 		43BC27121F2F582A000C3ECD /* ShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC27081F2F582A000C3ECD /* ShopController.m */; };
 		43BC27131F2F582A000C3ECD /* ShopInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BC270B1F2F582A000C3ECD /* ShopInfoController.m */; };
@@ -197,6 +199,10 @@
 		4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LineFormula.m"; sourceTree = "<group>"; };
 		4304ED771F2E15AB00F009EB /* JZGNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZGNavigationBar.h; sourceTree = "<group>"; };
 		4304ED781F2E15AB00F009EB /* JZGNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZGNavigationBar.m; sourceTree = "<group>"; };
+		4307BCF41F36DEE80072F203 /* ShopCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCarView.h; sourceTree = "<group>"; };
+		4307BCF51F36DEE80072F203 /* ShopCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCarView.m; sourceTree = "<group>"; };
+		4307BCF71F36EB1D0072F203 /* ShopCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCarModel.h; sourceTree = "<group>"; };
+		4307BCF81F36EB1D0072F203 /* ShopCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCarModel.m; sourceTree = "<group>"; };
 		43BC27051F2F582A000C3ECD /* ShopCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCommentController.h; sourceTree = "<group>"; };
 		43BC27061F2F582A000C3ECD /* ShopCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCommentController.m; sourceTree = "<group>"; };
 		43BC27071F2F582A000C3ECD /* ShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopController.h; sourceTree = "<group>"; };
@@ -341,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				4304ECF31F2E02F100F009EB /* Main */,
+				4307BCF31F36DEC40072F203 /* ShopCar */,
 				43BC27021F2F582A000C3ECD /* Shop */,
 				4304ECF01F2E02F100F009EB /* FoodDetail */,
 			);
@@ -491,6 +498,17 @@
 				4304ED4C1F2E02F100F009EB /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		4307BCF31F36DEC40072F203 /* ShopCar */ = {
+			isa = PBXGroup;
+			children = (
+				4307BCF41F36DEE80072F203 /* ShopCarView.h */,
+				4307BCF51F36DEE80072F203 /* ShopCarView.m */,
+				4307BCF71F36EB1D0072F203 /* ShopCarModel.h */,
+				4307BCF81F36EB1D0072F203 /* ShopCarModel.m */,
+			);
+			path = ShopCar;
 			sourceTree = "<group>";
 		};
 		43BC27021F2F582A000C3ECD /* Shop */ = {
@@ -805,6 +823,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4304ED791F2E15AB00F009EB /* JZGNavigationBar.m in Sources */,
+				4307BCF61F36DEE80072F203 /* ShopCarView.m in Sources */,
+				4307BCF91F36EB1D0072F203 /* ShopCarModel.m in Sources */,
 				4304ED521F2E02F100F009EB /* AFNetworkReachabilityManager.m in Sources */,
 				4304ED711F2E02F100F009EB /* UIImageView+WebCache.m in Sources */,
 				4304ED5E1F2E02F100F009EB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ShopCountView;
 @class ShopFoodModel;
 
 @interface ShopFoodViewCell : UITableViewCell
 //创建属性接受模型
 @property (nonatomic, strong) ShopFoodModel *model;
+
+//计数器视图
+@property (nonatomic, weak) ShopCountView *countView;
 
 @end

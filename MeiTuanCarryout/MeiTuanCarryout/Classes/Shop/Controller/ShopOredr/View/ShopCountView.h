@@ -8,10 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "ShopFoodModel.h"
+@class ShopCountView;
+
+@protocol ShopCountViewDelegate <NSObject>
+
+-(void)shopCountViewDelegateClickButton:(ShopCountView *)shopCountView;
+
+@end
+
+typedef enum : NSUInteger {
+    ShopCountViewButtonTypeAdd,
+    ShopCountViewButtonTypeSub,
+    
+} ShopCountViewButtonType;
 
 @interface ShopCountView : UIView
 
 @property (nonatomic, strong) ShopFoodModel *model;
+
+@property (nonatomic, assign) ShopCountViewButtonType *buttonType;
+
+@property (nonatomic, weak) id<ShopCountViewDelegate> delegate;
 
 +(instancetype)shopCountView;
 

@@ -17,6 +17,7 @@
 #import "ShopHeaderView.h"
 #import "shopHeaderViewModel.h"
 #import "ShopOrderModel.h"
+#import "ShopCarView.h"
 
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
@@ -32,8 +33,9 @@
 @property (nonatomic, weak) UIView *yellowView;
 //头部视图数据
 @property (nonatomic, strong) shopHeaderViewModel *shopHeaderViewModel;
-//点餐视图
+//点餐视图数据
 @property (nonatomic, strong) NSArray<ShopOrderModel *> *shopOrderModel;
+
 
 
 
@@ -68,6 +70,8 @@
     //设置右侧图标
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_share"] style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navBar.tintColor = [UIColor colorWithWhite:0.4 alpha:1];
+   
+    
     //创建头部视图
     [self settingHeaderView];
     //创建标签视图
@@ -75,7 +79,9 @@
     //创建滚动视图
     [self settingShopScrollView];
 
+    
 }
+
 #pragma mark - 设置头部视图
 -(void)settingHeaderView{
     //创建头部视图
@@ -195,6 +201,7 @@
     ShopOrderController *vc1 = [[ShopOrderController alloc]init];
     //传递数据
     vc1.shopOrderModel = _shopOrderModel;
+    
     ShopCommentController *vc2 = [[ShopCommentController alloc]init];
     ShopInfoController *vc3 = [[ShopInfoController alloc]init];
     

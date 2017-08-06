@@ -14,6 +14,8 @@
 #import "ShopFoodViewCell.h"
 #import "ShopOrderHeaderView.h"
 #import "FoodDetailController.h"
+#import "ShopCarView.h"
+
 
 @interface ShopOrderController ()<UITableViewDataSource , UITableViewDelegate>
 //标题视图
@@ -23,6 +25,10 @@
 
 //创建bool属性记录点击的是否为标题视图
 @property (nonatomic, assign) BOOL cotegoryIsClick;
+
+//购物车视图
+@property (nonatomic, weak) ShopCarView *shopCarView;
+
 
 
 
@@ -42,12 +48,34 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
 }
 
 -(void)setupUI{
+    //创建购物车
+    [self settingShopCarView];
     //创建标题视图
     [self settingCotegoryTabelView];
     //创建视图视图
     [self settingShopFoodTabelView];
     
+    [self.view bringSubviewToFront:_shopCarView];
+    
 }
+
+#pragma mark - 设置购物车
+-(void)settingShopCarView{
+    
+    
+    ShopCarView *carView = [[ShopCarView alloc] init];
+    
+    [self.view addSubview:carView];
+    
+    [carView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.offset(0);
+        make.height.offset(50);
+    }];
+    
+    _shopCarView = carView;
+    
+}
+
 #pragma mark - 创建标题视图
 -(void)settingCotegoryTabelView{
     UITableView *cotegoryTabelView = [[UITableView alloc] init];
@@ -68,8 +96,13 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     
     //注册
     [cotegoryTabelView registerClass:[ShopOrderCell class] forCellReuseIdentifier:shopOrderCellID];
+    //设置下部距离
+    cotegoryTabelView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+    
     //赋值
     _cotegoryTabelView = cotegoryTabelView;
+    
+
 }
 #pragma mark - 创建食物视图
 -(void)settingShopFoodTabelView{
@@ -93,6 +126,9 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     //设置代理
     foodTableView.delegate = self;
     foodTableView.dataSource = self;
+    //设置下部距离
+    foodTableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+    
     //赋值
     _foodTableView = foodTableView;
 }
@@ -131,6 +167,7 @@ static NSString *shopHeaderCellID = @"shopHeaderCellID";
     ShopFoodViewCell *cell = [tableView dequeueReusableCellWithIdentifier:shopFoodCellID forIndexPath:indexPath];
     
     cell.model = _shopOrderModel[indexPath.section].spus[indexPath.row];
+    
     
 //    ShopFoodModel *foodModel=_shopOrderModel[indexPath.section].spus[indexPath.row];
 //    cell.textLabel.text = foodModel.name;

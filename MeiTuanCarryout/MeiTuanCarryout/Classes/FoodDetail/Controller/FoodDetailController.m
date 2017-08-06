@@ -13,6 +13,7 @@
 #import "FoodDetailCell.h"
 #import "JZGNavigationBar.h"
 
+
 @interface FoodDetailController ()<UICollectionViewDelegate , UICollectionViewDataSource>
 //食物详情视图
 @property (nonatomic, weak) UICollectionView *foodDetailView;
@@ -59,8 +60,6 @@ static NSString *foodDetailCellID = @"foodDetailCellID";
     foodDetailView.showsHorizontalScrollIndicator = NO;
     //设置分页
     foodDetailView.pagingEnabled = YES;
-
-    
     
     
     _foodDetailView = foodDetailView;
