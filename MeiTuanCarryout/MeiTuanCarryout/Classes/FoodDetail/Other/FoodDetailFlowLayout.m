@@ -11,12 +11,12 @@
 @implementation FoodDetailFlowLayout
 
 -(void)prepareLayout{
-    
+    //cell尺寸
     self.itemSize = self.collectionView.bounds.size;
-    
+    //滚动方向
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    
+    //行列间距
     self.minimumLineSpacing = 0;
     
     self.minimumInteritemSpacing = 0;

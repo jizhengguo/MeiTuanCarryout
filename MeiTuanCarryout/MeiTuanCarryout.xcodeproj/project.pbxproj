@@ -373,9 +373,9 @@
 		4304ECFB1F2E02F100F009EB /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				4304ED741F2E0D5F00F009EB /* NSObject+LineFormula.h */,
 				43BC27151F2F58C7000C3ECD /* UILabel+Addition.h */,
 				43BC27161F2F58C7000C3ECD /* UILabel+Addition.m */,
-				4304ED741F2E0D5F00F009EB /* NSObject+LineFormula.h */,
 				4304ED751F2E0D5F00F009EB /* NSObject+LineFormula.m */,
 				43BC27181F2F58D7000C3ECD /* UIColor+Addition.h */,
 				43BC27191F2F58D7000C3ECD /* UIColor+Addition.m */,
