@@ -18,6 +18,7 @@
 #import "shopHeaderViewModel.h"
 #import "ShopOrderModel.h"
 #import "ShopCarView.h"
+#import "AFNetworking.h"
 
 #define KHeaderViewHeightMax 180
 #define KHeaderViewHeightMin 64
@@ -47,11 +48,21 @@
 @implementation ShopController
 
 - (void)viewDidLoad {
-    [self loadShopControllerData];
     
-    [self setupUI];
+    
+    [self loadShopControllerNetWorkData];
     
     [super viewDidLoad];
+//    [self setupUI];
+    
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        [self loadShopControllerNetWorkData];
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self setupUI];
+//        });
+//    });
+    
     
     //创建手势
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesture:)];
@@ -60,8 +71,13 @@
     
     pan.delegate = self;
     
+    
+    
 }
 
+
+
+#pragma mark - 设置UI界面
 -(void)setupUI{
     self.view.backgroundColor = [UIColor whiteColor];
     //修改标题
@@ -75,12 +91,19 @@
     self.navBar.tintColor = [UIColor colorWithWhite:0.4 alpha:1];
     
     
+    [self.view bringSubviewToFront:self.navBar];
+    
     //创建头部视图
     [self settingHeaderView];
+    
+           [self settingShopTagView];
+        //创建滚动视图
+        [self settingShopScrollView];
+  
     //创建标签视图
-    [self settingShopTagView];
-    //创建滚动视图
-    [self settingShopScrollView];
+    
+    [self.view bringSubviewToFront: self.navBar];
+    
     
     
 }
@@ -192,8 +215,20 @@
 -(void)settingShopScrollView{
     //创建滚动视图
     UIScrollView *shopScrollView = [[UIScrollView alloc]init];
+    
+//    shopScrollView.backgroundColor = [UIColor clearColor];
     //添加到父控件
     [self.view addSubview:shopScrollView];
+    
+    //关闭弹簧效果
+    shopScrollView.bounces = NO;
+    //设置分页效果
+    shopScrollView.pagingEnabled = YES;
+    //关闭滚动条
+    shopScrollView.showsVerticalScrollIndicator = NO;
+    shopScrollView.showsHorizontalScrollIndicator = NO;
+
+    
     //设置约束
     [shopScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_shopTagView.mas_bottom);
@@ -215,11 +250,15 @@
     for (NSInteger i = 0; i < arr.count; i++) {
         //将其添加到父控件中
         [shopScrollView addSubview:arr[i].view];
+        
+
         //将其控制器添加到父控制器
         [self addChildViewController:arr[i]];
         //确定添加
         [arr[i] didMoveToParentViewController:self];
     }
+    
+   
     //设置约束
     [shopScrollView.subviews mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.offset(0);
@@ -228,20 +267,20 @@
     }];
     
     [shopScrollView.subviews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];
+    
+    
+    
     //设置代理
     shopScrollView.delegate = self;
-    //关闭弹簧效果
-    shopScrollView.bounces = NO;
-    //设置分页效果
-    shopScrollView.pagingEnabled = YES;
-    //关闭滚动条
-    shopScrollView.showsVerticalScrollIndicator = NO;
-    shopScrollView.showsHorizontalScrollIndicator = NO;
+    
+    
+    
     
     //赋值
     _shopScrollView = shopScrollView;
     
 }
+
 #pragma mark - 设置手势
 -(void)panGesture:(UIPanGestureRecognizer *)pan{
     
@@ -281,8 +320,8 @@
             
             break;
         case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateCancelled:
-        case UIGestureRecognizerStateFailed:{
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateCancelled:{
             CGFloat shopHeaderViewMiddelHeight = (KHeaderViewHeightMax - KHeaderViewHeightMin) * 0.5 +KHeaderViewHeightMin;
             
             [_headerView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -293,14 +332,17 @@
                 }
             }];
             
-            [UIView animateWithDuration:0.25 animations:^{
-                [self.view setNeedsLayout];
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view layoutIfNeeded];
             }];
         }
             break;
         default:
             break;
     }
+    
+    //获取最新高度
+    height = _headerView.bounds.size.height;
     
     CGFloat alpha = [@(height) lineFormulaResultAndVlaue1:JZGValueMake(1, 64) AndVlaue2:JZGValueMake(0, 180)];
     
@@ -372,6 +414,48 @@
     
     
 }
+
+#pragma mark - 加载数据
+-(void)loadShopControllerNetWorkData{
+//    //创建一个路径
+//    NSURL *url = [[NSBundle mainBundle] URLForAuxiliaryExecutable:@"food.json"];
+//    //解析成nsdata
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    //JSON
+//    NSDictionary *arr= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    [[AFHTTPSessionManager manager] GET:@"https://raw.githubusercontent.com/heima26/FriendDemo/master/food.json" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        
+        NSDictionary *shopHeaderViewDict = responseObject[@"data"][@"poi_info"];
+        //字典转模型
+        shopHeaderViewModel *model= [shopHeaderViewModel shopHeaderVIewModelWithDict:shopHeaderViewDict];
+        //保存数据
+        _shopHeaderViewModel = model;
+        
+        
+        //点餐界面数据
+        NSArray *shopOrderArr = responseObject[@"data"][@"food_spu_tags"];
+        
+        NSMutableArray *shopOrderArrM = [NSMutableArray arrayWithCapacity:shopOrderArr.count];
+        //遍历数组,字典转模型
+        for (NSDictionary *dict in shopOrderArr) {
+            ShopOrderModel *model = [ShopOrderModel shopOrderModelWithDict:dict];
+            [shopOrderArrM addObject:model];
+        }
+        
+        _shopOrderModel = shopOrderArrM;
+        
+        [self setupUI];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error != nil) {
+            NSLog(@"%@",error);
+        }
+    }];
+    
+    
+}
+
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     

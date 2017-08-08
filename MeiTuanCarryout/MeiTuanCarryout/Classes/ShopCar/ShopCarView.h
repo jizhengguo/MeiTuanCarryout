@@ -13,7 +13,7 @@
 
 //创建模型属性
 @property (nonatomic, strong) NSArray<ShopFoodModel *> *shopCarModel;
-
+//动画方法
 -(void)animationWithStarPoint:(CGPoint)starPoint;
 
 @end

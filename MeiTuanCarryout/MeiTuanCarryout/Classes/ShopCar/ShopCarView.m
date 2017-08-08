@@ -147,7 +147,7 @@
     
     
 }
-
+//重写set方法赋值
 -(void)setShopCarModel:(NSArray<ShopFoodModel *> *)shopCarModel{
     
     _shopCarModel = shopCarModel;
@@ -178,7 +178,7 @@
     _foodCountLabel.text = @(shopCarModel.count).description;
     
 }
-
+//设置小动画
 -(void)animationWithStarPoint:(CGPoint)starPoint{
     UIImageView *redPoint = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_common_point"]];
     [self addSubview:redPoint];
